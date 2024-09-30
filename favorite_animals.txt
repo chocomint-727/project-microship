@@ -1,4 +1,0 @@
-Chicken
-Cow
-Sheep
-Cat
