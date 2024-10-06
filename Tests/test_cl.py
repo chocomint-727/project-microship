@@ -85,7 +85,7 @@ class TestClass(unittest.TestCase):
          expectedCode.terminate()
          
     def test_filter_by_genres_no_combination(self):
-         "This tests the edge case for filter_by_genres when multiple valid genres are inputted, but there is no anime that fits all of the genres."
+         """This tests the edge case for filter_by_genres when multiple valid genres are inputted, but there is no anime that fits all of the genres."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Supernatural", "Comedy"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
