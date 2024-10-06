@@ -3,10 +3,7 @@ import unittest
 import sys
 import os
 import csv
-
-parent_dir = "/root/team-project-microship"
-sys.path.append(parent_dir)
-from ProductionCode.utils import *
+#from ProductionCode.utils import *
 
 class TestClass(unittest.TestCase):
 
@@ -19,5 +16,6 @@ class TestClass(unittest.TestCase):
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), "8.78")
          expectedCode.terminate()
+
 
 unittest.main()
