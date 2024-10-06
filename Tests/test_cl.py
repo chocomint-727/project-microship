@@ -27,7 +27,7 @@ class TestClass(unittest.TestCase):
 
 
     def test_get_score_incorrect_title(self):
-         """This tests the edge case for get_score when an invalid title is inputted. An empty string should be retired."""
+         """This tests the edge case for get_score when an invalid title is inputted. An empty string should be returned."""
          expectedCode = subprocess.Popen(["python3", "ProductionCode/utils.py", "--title", "Space Jam"], 
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
@@ -43,6 +43,7 @@ class TestClass(unittest.TestCase):
             expectedCode.terminate()
 
     def test_test_filter_by_one_genre_valid(self):
+         """This tests whether filter_by_genres returns the correct animes when filtering by one valid genre."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action"],
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
@@ -51,6 +52,7 @@ class TestClass(unittest.TestCase):
 
 
     def test_filter_by_genre_invalid_genre(self):
+         """This tests the edge case for filter_by_genres where a single invalid genre is inputted. This should return an empty list."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "FakeGenre"],
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
@@ -58,36 +60,32 @@ class TestClass(unittest.TestCase):
          expectedCode.terminate()
 
 
-    def test_filter_by_genre_invalid_partial(self):
+    def test_filter_by_genres_invalid_partial(self):
+         """This tests the edge case for filter_by_genre where one valid genre and one invalid genre is inputted. This should return an empty list."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action", "FakeGenre"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), '[]')
          expectedCode.terminate()
-    
-    def test_filter_by_genre_no_comibination(self):
-         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Supernatural", "Comedy"],
-                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
-         output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), '[]')
-         expectedCode.terminate()
          
-         
-    def test_filter_by_genre_many_genres(self):
+    def test_filter_by_genres_many_genres(self):
+         """This tests whether filter_by_genres returns the correct anime when multiple genres are inputted."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Drama", "Horror", "Mystery", "Police", "Psychological", "Seinen", "Thriller"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), '[19]')
          expectedCode.terminate()
          
-    def test_filter_by_genre_no_input(self):
+    def test_filter_by_genres_no_input(self):
+         """This tests the edge case for filter_by_genres when there is no input. An empty list should be returned."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", ""],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), '')
          expectedCode.terminate()
          
-    def test_filter_by_genre_no_comibination(self):
+    def test_filter_by_genres_no_combination(self):
+         "This tests the edge case for filter_by_genres when multiple valid genres are inputted, but there is no anime that fits all of the genres."
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Supernatural", "Comedy"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
@@ -95,6 +93,7 @@ class TestClass(unittest.TestCase):
          expectedCode.terminate()
          
     def test_filter_by_genre_case_sensitive(self):
+         """This tests the edge case for when a valid genre is inputted with improper capitalization. The animes that fit this genre will still be returned because filter_by_genres is not case sensitive."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "AcTIon"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
