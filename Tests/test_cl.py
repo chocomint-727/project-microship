@@ -32,6 +32,33 @@ class TestClass(unittest.TestCase):
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), "")
          expectedCode.terminate()
+
+
+
+
+
+    def test_test_filter_by_one_genre_valid(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action"],
+                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[1, 5, 6, 7, 15, 18]')
+         expectedCode.terminate()
+
+
+    def test_filter_by_genre_invalid_genre(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "FakeGenre"],
+                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[]')
+         expectedCode.terminate()
+
+
+    def test_filter_by_genre_invalid_partial(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action", "FakeGenre"],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[]')
+         expectedCode.terminate()
     
     
 
