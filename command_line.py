@@ -1,6 +1,7 @@
 import sys
 import os
 import argparse
+from ProductionCode.utils import *
 
 parser = argparse.ArgumentParser(
                     prog='ProgramName',
@@ -14,6 +15,7 @@ args = parser.parse_args()
 print(args.genres)
 print(args.title)
 
-def filter_by_genres(genres):
-    for g in genres:
-        pass
+if args.genres is not None:
+    for r in filter_by_genres(args.genres):
+        print(r, "\n")
+    
