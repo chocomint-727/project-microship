@@ -21,6 +21,5 @@ def get_genres_cmd():
     return genres
 
 if args.genres is not None:
-    for r in filter_by_genres(args.genres):
-        print(r, "\n")
+    print(filter_by_genres(args.genres))
     
