@@ -15,10 +15,6 @@ args = parser.parse_args()
 print(args.genres)
 print(args.title)
 
-def filter_by_genres(genres):
-    for g in genres:
-        pass
-
 def get_genres_cmd():
     genres = get_genre(args.title)
     print(genres)
