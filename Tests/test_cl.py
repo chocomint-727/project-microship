@@ -33,10 +33,14 @@ class TestClass(unittest.TestCase):
          output, err = expectedCode.communicate()
          self.assertEqual(output.strip(), "")
          expectedCode.terminate()
-
-
-
-
+         
+    def test_get_score_cowboy_bebop_lowercase(self):
+            """This tests the edge case where a correct anime title is input into get_score, but the capitalization is incorrect."""
+            expectedCode = subprocess.Popen(["python3", "ProductionCode/utils.py", "--title", "cowboy bebop"], 
+                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+            output, err = expectedCode.communicate()
+            self.assertEqual(output.strip(), "")
+            expectedCode.terminate()
 
     def test_test_filter_by_one_genre_valid(self):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action"],
