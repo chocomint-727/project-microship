@@ -18,7 +18,7 @@ The command line app has two functionalities at the moment:
 
 To filter by genres, run <code>python3 command_line.py --genres [genres to filter by]</code><br>
 For example, try <code>python3 command_line.py --genres action comedy</code><br>
-This will output a list of all MAL IDs which match both action and comedy
+This will output a list of all MAL IDs which match both action and comedy.
 
 
 
