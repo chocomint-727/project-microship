@@ -24,4 +24,15 @@ class TestClass(unittest.TestCase):
          self.assertEqual(output.strip(), "8.78")
          expectedCode.terminate()
 
+
+    def test_get_score_incorrect_title(self):
+         """This tests the edge case for get_score when an invalid title is inputted. An empty string should be retired."""
+         expectedCode = subprocess.Popen(["python3", "ProductionCode/utils.py", "--title", "Space Jam"], 
+                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), "")
+         expectedCode.terminate()
+    
+    
+
 unittest.main()
