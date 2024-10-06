@@ -4,7 +4,11 @@ import sys
 import os
 import csv
 
-parent_dir = "/root/team-project-microship"
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # adaptable parent directory so we can import the utils file. solution that works on any os thanks to not hardcoding a path
+
+# Add the parent directory to the system path
+sys.path.append(parent_dir)
+
 sys.path.append(parent_dir)
 from ProductionCode.utils import *
 
