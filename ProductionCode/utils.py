@@ -1,6 +1,6 @@
 import csv
 
-dataset = open('/root/team-project-microship/Data/anime.csv', newline='')
+dataset = open('Data/anime.csv', newline='')
 
 dataset_read = csv.reader(dataset)
 
