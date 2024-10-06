@@ -11,7 +11,7 @@ NAMES:
 The command line app has two functionalities at the moment:
 - Filtering by genres
     -  This function returns a list of the MAL IDs which match every genre inputted
-- Accessing the rating of a show by its title
+- Accessing the rating of an anime by its title
     - This function gives a rating out of 10 as seen on MAL
 
 
@@ -25,3 +25,5 @@ This will output a list of all MAL IDs which match both action and comedy.
 To access ratings, run <code>python3 command_line.py --title \[title\]</code><br>
 For example, try <code>python3 command_line.py --title Trigun</code><br>
 This will output the rating for Trigun, which is 8.24.
+
+To run our tests, run python3 Tests/test_cl.py.

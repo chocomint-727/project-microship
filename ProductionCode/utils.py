@@ -4,8 +4,7 @@ dataset = open('Data/command_line_testing_subset.csv', newline='')
 
 dataset_read = csv.reader(dataset)
 
-#for row in dataset_read:
-#    print(row)
+
 
 def get_score(title):
     ''' This function returns the score as found in the database based on the name of a show '''
