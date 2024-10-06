@@ -1,12 +1,16 @@
 import csv
 
-
-dataset = open('../Data/anime.csv', newline='')
+dataset = open('/root/team-project-microship/Data/anime.csv', newline='')
 
 dataset_read = csv.reader(dataset)
 
-for row in dataset_read:
-    print(row)
+col_titles = dataset_read[0]
+
+def get_genre(title):
+    for row in dataset_read:
+        if row[1] == title:
+            print(row[3])
+            return row[3]
    
 def filter_by_genres(genres):
     return_rows = [] # collections of rows to return
