@@ -1,6 +1,6 @@
 import csv
 
-dataset = open('Data/anime.csv', newline='')
+dataset = open('Data/command_line_testing_subset.csv', newline='')
 
 dataset_read = csv.reader(dataset)
 
