@@ -30,7 +30,7 @@ def filter_by_genres(genres):
                 genres_match[i] = 1 # if match, set to 1
                 
         if sum(genres_match) == len(genres_match): # if all genres are matched
-            return_rows.append(row)
+            return_rows.append(int(row[0]))
             
     return return_rows
         
