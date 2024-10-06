@@ -18,6 +18,7 @@ class TestClass(unittest.TestCase):
         load_data()"""
 
     def test_get_score_cowboy_bebop(self):
+         """This tests whether get_score correctly returns the score when an anime that is in the dataset is inputted."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--title", "Cowboy Bebop"], 
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
