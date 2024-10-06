@@ -1,19 +1,11 @@
 import csv
 
 
-dataset = open('/root/team-project-microship/Data/anime.csv', newline='')
+dataset = open('../Data/anime.csv', newline='')
 
 dataset_read = csv.reader(dataset)
 
-scores = []
-titles = []
-for row in dataset_read:
-    titles.append(row[1])
+col_titles = dataset_read[0]
 
 for row in dataset_read:
-    scores.append(row[2])
-
-def get_score():
-    #
-
-dataset.close()
+    print(row)
