@@ -13,13 +13,6 @@ def get_score(title):
         if row[1] == title:
             print(row[2])
             return row[2]
-
-def get_genre(title):
-    ''' '''
-    for row in dataset_read:
-        if row[1] == title:
-            print(row[3])
-            return row[3]
    
 def filter_by_genres(genres):
     return_rows = [] # collections of rows to return

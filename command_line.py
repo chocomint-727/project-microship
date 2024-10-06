@@ -12,19 +12,15 @@ parser.add_argument("--genres", nargs="+")
 parser.add_argument("--title", type=str)
 
 args = parser.parse_args()
-print(args.genres)
-print(args.title)
 
 def filter_by_genres(genres):
     for g in genres:
         pass
 
-def get_genres_cmd():
-    genres = get_genre(args.title)
-    print(genres)
-    return genres
-
 if args.genres is not None:
     for r in filter_by_genres(args.genres):
         print(r, "\n")
-    
+elif args.title is not None:
+    get_score(args.title)
+
+
