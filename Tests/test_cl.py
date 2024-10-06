@@ -65,6 +65,44 @@ class TestClass(unittest.TestCase):
          self.assertEqual(output.strip(), '[]')
          expectedCode.terminate()
     
+    def test_filter_by_genre_no_comibination(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Supernatural", "Comedy"],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[]')
+         expectedCode.terminate()
+         
+         
+    def test_filter_by_genre_many_genres(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Drama", "Horror", "Mystery", "Police", "Psychological", "Seinen", "Thriller"],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[19]')
+         expectedCode.terminate()
+         
+    def test_filter_by_genre_no_input(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", ""],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '')
+         expectedCode.terminate()
+         
+    def test_filter_by_genre_no_comibination(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Supernatural", "Comedy"],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[]')
+         expectedCode.terminate()
+         
+    def test_filter_by_genre_case_sensitive(self):
+         expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "AcTIon"],
+                                          stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
+         output, err = expectedCode.communicate()
+         self.assertEqual(output.strip(), '[1, 5, 6, 7, 15, 18]')
+         expectedCode.terminate()
+
+
+
     
 
 unittest.main()
