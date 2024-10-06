@@ -3,7 +3,6 @@ import unittest
 import sys
 import os
 import csv
-from ProductionCode.utils import *
 
 class TestClass(unittest.TestCase):
 
