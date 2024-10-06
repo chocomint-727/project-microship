@@ -23,7 +23,5 @@ elif args.title is not None:
     get_score(args.title)
 
 
-=======
-    print(filter_by_genres(args.genres))
     
->>>>>>> e9dd4ff4f62f843d7c1404bad5ebd5e9828df6d7
+    
