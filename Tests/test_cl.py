@@ -77,7 +77,7 @@ class TestClass(unittest.TestCase):
          expectedCode.terminate()
          
     def test_filter_by_genres_no_input(self):
-         """This tests the edge case for filter_by_genres when there is no input. An empty list should be returned."""
+         """This tests the edge case for filter_by_genres when there is no input. An error should occur and nothing will be returned in output."""
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", ""],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()

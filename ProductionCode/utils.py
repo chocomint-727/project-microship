@@ -2,12 +2,12 @@ import csv
 
 dataset = open('Data/command_line_testing_subset.csv', newline='')
 
-dataset_read = csv.reader(dataset)
+dataset_reader = csv.reader(dataset)
 
-
+dataset_read = [f for f in dataset_reader]
 
 def get_score(title):
-    ''' This function returns the score as found in the database based on the name of a show '''
+    """ This function returns the score as found in the database based on the name of a show """
     for row in dataset_read:
         if row[1] == title:
             print(row[2])
