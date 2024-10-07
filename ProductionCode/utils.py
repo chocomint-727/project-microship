@@ -3,15 +3,14 @@ import csv
 dataset = open('Data/command_line_testing_subset.csv', newline='')
 
 dataset_reader = csv.reader(dataset)
-
 dataset_read = [f for f in dataset_reader]
 
 def get_score(title):
     """ This function returns the score as found in the database based on the name of a show."""
-    for row in dataset_read:
-        if row[1] == title:
-            print(row[2])
-            return row[2]
+    for row in dataset_read: # looping through rows in the dataset
+        if row[1] == title: # if title name in the dataset matches the input
+            print(row[2]) # print for debug purposes
+            return row[2] # return!
    
 def filter_by_genres(genres):
     """ This function returns a list of anime ids that match all specified genres."""
