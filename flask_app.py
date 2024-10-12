@@ -43,3 +43,6 @@ def filter():
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
     return format_html_table(filter_by_genres(query)) # return the indices in the list
+
+if __name__ == "__main__":
+    app.run()
