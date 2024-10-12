@@ -45,4 +45,5 @@ def filter():
     return format_html_table(filter_by_genres(query)) # return the indices in the list
 
 if __name__ == "__main__":
+    load_data()
     app.run()
