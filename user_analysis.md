@@ -32,5 +32,43 @@ We have learned about biases related to precision in user input in class, partic
 ### Repeat
 We can also help out users who have difficulty typing titles correctly either because they are not very comfortable with typing or because they do not remember how to spell titles by implementing the previously mentioned auto-complete system which can complete the start of a title being typed in the command line.
 
+
+
+# CIDER Analysis
+
+
+## Add description
+
+
+### Critique
+The app assumes that users of the website are above a certain age to look up anime shows and movies that might contain unsavory content, themes and imagery such as gore and nudity. 
+The app assumes that users are familiar with HTML URL percent encoding, or are using a browser that supports automatic conversion of "normal", standard-looking characters to HTML-encoded characters to make sure they are accessing the right destination. For instance, some browsers automatically convert spaces to the appropriate %20 for HTML.
+
+
+
+
+
+
+### Imagine
+Users who are under a certain age may be excluded from accessing anime shows and movies that are inappropriate for them because their parental figures might not allow them to use the website, as it has no filters for different age ratings. Additionally, users of any age might not want to use the website out of concern that they might come across inappropriate content.
+Users may input an anime title of two or more words that are separated by a space (or whatever symbol), which is not valid input for a URL. If users do not have a browser that automatically converts these spaces and symbols to their percent-encoded counterparts, they will not be able to access information about an anime of their choice, deeming the app completely useless.
+
+
+
+
+### Design
+To make the website more inclusive, a dataset that includes age ratings for each of the listed anime shows and movies could allow us to add a filter by content rating function to allow more users to search for their desired anime.
+A feature to be implemented would be to automatically detect invalid input (spaces and special characters that are not formatted in their percent-encoded way) and replace them with their percent-encoded counterparts.
+
+
+### Expand
+Users trust that our datasets are comprehensive and representative of anime watchers. They expect our data to be representative of various genres, content types, and age groups, making searches conclusive and thorough.
+
+
+### Repeat
+We can do research on how the data was collected and provide a page that explains how the data was collected to assure users that the ratings are an accurate representation of what anime watchers think. If in our research, we find that the data was not collected in a way believed to account for all anime watchers, we could make a new survey that asks anime watchers to rate various animes in our dataset. We would distribute this to a large group of anime watchers that are representative of all anime watchers, according to research that we can do on this topic.
+
+
+
 ---
 
