@@ -50,14 +50,6 @@ def homepage():
     display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show to get information about without. brackets! <br> It currently only displays title and score. <br><br> Titles you can try: <br> " + titles
     return display
 
-@app.route('/<row>/<col>', strict_slashes = False)
-def get_cell(row, col):
-    ''' Returns the cell in the dataset based on an input row and column '''
-    try:
-        return dummy_data[int(row)][int(col)]
-    except IndexError:
-        return "Cell not found. Please provide valid row and column indices.", 404
-
 @app.route('/title/<title>/', strict_slashes = False)
 def display_title_info(title):
     ''' Displays title info. If title does not exist, say it is not found in dataset '''
