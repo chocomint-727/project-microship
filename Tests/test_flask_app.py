@@ -73,3 +73,6 @@ class TestHomepage(unittest.TestCase):
         self.app = app.test_client()
         response = self.app.get("/genres?genre=school").data
         self.assertEqual(b"[]\n", response)
+        
+        
+unittest.main()
