@@ -14,7 +14,7 @@ class TestHomepage(unittest.TestCase):
         response = self.app.get('/', follow_redirects=True)
         self.assertIn(b'Welcome to the homepage! Type in', response.data)
 
-    def test_route(self):
+    def test_route_no_title(self):
         ''' Tests the edge case of user not writing a title at all '''
         self.app = app.test_client()
         response = self.app.get('/title/', follow_redirects=True)
