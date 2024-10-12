@@ -12,6 +12,13 @@ def load_data():
         reader = csv.reader(f)
         dset = [line for line in reader]
         
+def get_title_info(title):
+    ''' Helper function that gets title info from input title, returns score and genre '''
+    score = get_score(title) 
+    genre = get_genre(title)
+    return score, genre
+
+
 def format_html_table(indices):
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
@@ -36,6 +43,30 @@ def format_html_table(indices):
     p += "</table></body>"
     return p
 
+@app.route('/')
+def homepage():
+    ''' Returns what is to be displayed on the homepage '''
+    titles = "Cowboy Bebop, Cowboy Bebop: Tengoku no Tobira, Trigun, Witch Hunter Robin, Bouken Ou Beet, Eyeshield 21, Hachimitsu to Clover, Hungry Heart: Wild Striker, Initial D Fourth Stage, Monster"
+    display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show to get information about without. brackets! <br> It currently only displays title and score. <br><br> Titles you can try: <br> " + titles
+    return display
+
+@app.route('/<row>/<col>', strict_slashes = False)
+def get_cell(row, col):
+    ''' Returns the cell in the dataset based on an input row and column '''
+    try:
+        return dummy_data[int(row)][int(col)]
+    except IndexError:
+        return "Cell not found. Please provide valid row and column indices.", 404
+
+@app.route('/title/<title>/', strict_slashes = False)
+def display_title_info(title):
+    ''' Displays title info. If title does not exist, say it is not found in dataset '''
+    score, genre = get_title_info(title)
+    if score is None or genre is None:
+        return f"Title '{title}' not found in the dataset."
+    display = f"Title:  {title} <br> Score: {str(score)} <br> Genre: {genre}"
+    return display
+
 @app.route("/genres")
 def filter(): 
     """ interacts with the filter by genres function. 
@@ -43,6 +74,15 @@ def filter():
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
     return format_html_table(filter_by_genres(query)) # return the indices in the list
+
+@app.errorhandler(404)
+def page_not_found(e):
+   return "Page not found. Remember that the URL convention is /title/(name of title) or /genres!"
+
+@app.errorhandler(500)
+def python_bug(e):
+   return "Uh oh! Something failed to run behind the scenes. For now you can return to the homepage, make sure the URL follows the guidelines, and contact the developers for help!"
+
 
 if __name__ == "__main__":
     app.run()
