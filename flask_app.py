@@ -66,7 +66,7 @@ def filter():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
-    return format_html_table(filter_by_genres(query)) # return the indices in the list
+    return filter_by_genres(query) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):
