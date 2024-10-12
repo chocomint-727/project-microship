@@ -48,6 +48,7 @@ def homepage():
     ''' Returns what is to be displayed on the homepage '''
     titles = "Cowboy Bebop, Cowboy Bebop: Tengoku no Tobira, Trigun, Witch Hunter Robin, Bouken Ou Beet, Eyeshield 21, Hachimitsu to Clover, Hungry Heart: Wild Striker, Initial D Fourth Stage, Monster"
     display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show to get information about without. brackets! <br> It currently only displays title and score. <br><br> Titles you can try: <br> " + titles
+    display += "<br><br>To search for shows by their genres, use /genres! Make sure to include get request arguments with the genres you want to include."
     return display
 
 @app.route('/title/<title>/', strict_slashes = False)
