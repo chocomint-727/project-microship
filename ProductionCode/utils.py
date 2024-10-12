@@ -9,7 +9,7 @@ def get_score(title):
     """ This function returns the score as found in the database based on the name of a show."""
     for row in dataset_read: # looping through rows in the dataset
         if row[1] == title: # if title name in the dataset matches the input
-            #print(row[2]) # print for debug purposes
+            print(row[2]) # print for debug purposes
             return row[2] # return!
    
 def get_genre(title):

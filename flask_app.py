@@ -70,7 +70,7 @@ def filter():
 
 @app.errorhandler(404)
 def page_not_found(e):
-   return "Page not found. Remember that the URL convention is /title/(name of title) or /genres!"
+   return "Page not found. Remember that the URL convention is /title/(name of title) or /genres?genre=genre_to_search_by!"
 
 @app.errorhandler(500)
 def python_bug(e):
