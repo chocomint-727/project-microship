@@ -12,7 +12,7 @@
 
 # CIDER Analysis
 
-## Four assumptions are analyzed here.
+## This is our CIDER analysis for the Command Line deliverable. Four assumptions are analyzed here.
 
 ### Critique
 The app assumes users will always know and input the exact titles of anime correctly, excluding users who do not remember the exact names of an anime. The app also assumes that users understand anime genres and are able to input them correctly for filtering purposes, which will make users who are new to anime or unfamiliar with specific genres excluded from using the app efficiently. Furthermore, the app assumes that all users are familiar with English, which excludes non-English speakers or users who are more comfortable in other languages, especially Japanese, the language of the media we are trying to make more accessible to users.
@@ -37,7 +37,7 @@ We can also help out users who have difficulty typing titles correctly either be
 # CIDER Analysis
 
 
-## Add description
+## This is our additional CIDER analysis for the Flask deliverable. Three assumptions are addressed here.
 
 
 ### Critique
