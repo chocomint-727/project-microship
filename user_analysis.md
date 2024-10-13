@@ -41,32 +41,26 @@ We can also help out users who have difficulty typing titles correctly either be
 
 
 ### Critique
-The app assumes that users of the website are above a certain age to look up anime shows and movies that might contain unsavory content, themes and imagery such as gore and nudity. 
+The app assumes that users of the website are above a certain age appropriate to look up anime shows and movies that might contain unsavory content, themes and imagery such as gore and nudity. 
 The app assumes that users are familiar with HTML URL percent encoding, or are using a browser that supports automatic conversion of "normal", standard-looking characters to HTML-encoded characters to make sure they are accessing the right destination. For instance, some browsers automatically convert spaces to the appropriate %20 for HTML.
 
 
-
-
-
-
 ### Imagine
-Users who are under a certain age may be excluded from accessing anime shows and movies that are inappropriate for them because their parental figures might not allow them to use the website, as it has no filters for different age ratings. Additionally, users of any age might not want to use the website out of concern that they might come across inappropriate content.
-Users may input an anime title of two or more words that are separated by a space (or whatever symbol), which is not valid input for a URL. If users do not have a browser that automatically converts these spaces and symbols to their percent-encoded counterparts, they will not be able to access information about an anime of their choice, deeming the app completely useless.
-
-
+Users who are under a certain age may be excluded from accessing anime shows and movies whose content is inappropriate for them because their parental figures may bar them from doing so. Therfore, a potential user's parents might not allow them to use the website, as it has no filters for different age ratings. Additionally, users of any age might not want to use the website out of concern that they might come across inappropriate content.
+Users may input an anime title of two or more words that are separated by a space (or whatever symbol), which is not valid input for a URL. If users do not have a browser that automatically converts these spaces and symbols to their percent-encoded counterparts, they will not be able to access information about the score of an anime of their choice, meaning that they are excluded from half of our app's current functionality.
 
 
 ### Design
-To make the website more inclusive, a dataset that includes age ratings for each of the listed anime shows and movies could allow us to add a filter by content rating function to allow more users to search for their desired anime.
-A feature to be implemented would be to automatically detect invalid input (spaces and special characters that are not formatted in their percent-encoded way) and replace them with their percent-encoded counterparts.
+To make the website more inclusive, a dataset that includes age ratings for each of the listed anime shows and movies could allow us to add a filter by content rating function to allow more users to search for their desired anime, including young users whose parents may bar them from watching content above a certain rating.
+Another feature that we could implement would be to automatically detect invalid input (spaces and special characters that are not formatted in their percent-encoded way) and replace them with their percent-encoded counterparts. This would help users who do not use a browser that automatically converts special characters and spaces to the proper HTML format and who are not familiar with HTML percent encoding to use the get_score function of our app.
 
 
 ### Expand
-Users trust that our datasets are comprehensive and representative of anime watchers. They expect our data to be representative of various genres, content types, and age groups, making searches conclusive and thorough.
+Users trust that our datasets are comprehensive and representative of anime watchers. They expect our data to be representative of various genres, studios, time periods, content types, and age groups, making searches conclusive and thorough.
 
 
 ### Repeat
-We can do research on how the data was collected and provide a page that explains how the data was collected to assure users that the ratings are an accurate representation of what anime watchers think. If in our research, we find that the data was not collected in a way believed to account for all anime watchers, we could make a new survey that asks anime watchers to rate various animes in our dataset. We would distribute this to a large group of anime watchers that are representative of all anime watchers, according to research that we can do on this topic.
+We can do research on how the data was collected and provide a page that explains how the data was collected to assure users that the ratings are an accurate representation of what anime watchers think, that all genres are accurately represented, that there is an appropriately wide range of studios represented, both T.V. shows and movies are accurately represented, various time periods in anime are represented, and that different maturity ratings are represented. If, in our research, we find that one or more of these criteria is not met, we can explain the limitations of the dataset on a page on our website. We could also do research on other datasets that we could merge with the current one or to replace the current one in order to have a more comprehensive and representative dataset. Additionally, we could provide a feature that would allow users to suggest new anime to add to the website, which we would approve if we deem them valid. Furthermore, we can add a feature that allows users to provide their own score for an anime, which would be factored into the current score in the database.
 
 
 
