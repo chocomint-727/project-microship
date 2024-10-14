@@ -20,6 +20,8 @@ def get_title_info(title):
 
 
 def format_html_table(indices):
+    """This is commented out because we are currently not using it. We are planning to use 
+    this function in the future."""
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
             <title>Media Sorter</title>
@@ -47,7 +49,7 @@ def format_html_table(indices):
 def homepage():
     ''' Returns what is to be displayed on the homepage '''
     titles = "Cowboy Bebop, Cowboy Bebop: Tengoku no Tobira, Trigun, Witch Hunter Robin, Bouken Ou Beet, Eyeshield 21, Hachimitsu to Clover, Hungry Heart: Wild Striker, Initial D Fourth Stage, Monster"
-    display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show to get information about without. brackets! <br> It currently only displays title and score. <br><br> Titles you can try: <br> " + titles
+    display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show to get information about an anime. brackets! <br> It currently only displays title and score. <br><br> Titles you can try: <br> " + titles
     display += "<br><br>To search for shows by their genres, use /genres! Make sure to include get request arguments with the genres you want to include."
     return display
 
@@ -62,7 +64,7 @@ def display_title_info(title):
 
 @app.route("/genres")
 def filter(): 
-    """ interacts with the filter by genres function. 
+    """ Interacts with the filter by genres function. 
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request

@@ -9,7 +9,8 @@ from flask_app import *
 
 class TestHomepage(unittest.TestCase):
     def test_route(self):
-        ''' Tests the standard case for the homepage '''
+        ''' Tests the standard case for the homepage and this is also an integration test that makes sure
+        that flask is working.'''
         self.app = app.test_client()
         response = self.app.get('/', follow_redirects=True)
         self.assertIn(b'Welcome to the homepage! Type in', response.data)
@@ -46,11 +47,16 @@ class TestHomepage(unittest.TestCase):
         self.assertIn(b'Score: 8.78', response.data)
 
     def test_valid_genre(self):
-        ''' Tests for a valid title - should include a valid score '''
+        ''' Tests the get_genre function with a valid one word title  '''
         self.app = app.test_client()
         response = self.app.get('/title/Monster', follow_redirects=True)
         self.assertIn(b'Drama, Horror, Mystery, Police, Psychological, Seinen, Thriller', response.data)
 
+    def test_valid_genre_multiple_words(self):
+        """This tests get_genre for a valid title that is multiple words."""
+        self.app = app.test_client()
+        response = self.app.get('/title/Cowboy Bebop', follow_redirects=True)
+        self.assertIn(b'Action, Adventure, Comedy, Drama, Sci-Fi, Space', response.data)
 
     def test_one_genre(self):
         """Tests the filter_by_genre function with one valid genre

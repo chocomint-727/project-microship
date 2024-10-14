@@ -4,7 +4,7 @@
 - Anime Researchers: Those who are researching anime and want a robust way to get information quickly.
 
 # Potential Benefits
-- Users who are comfortable with a command line interface can get a near instant answer to their queries.
+- Users who are comfortable with a command line interface and HTML URLs can get a near instant answer to their queries.
 - The ability to filter anime based on multiple genres allows users to tailor results to their specific tastes.
 - Researchers can find information about the ratings and genres of various anime quickly.
 - There is something for everyone; with our extremely large and comprehensive dataset, anime enjoyers will be able to find anime they will undoubtedly enjoy.
@@ -37,7 +37,7 @@ We can also help out users who have difficulty typing titles correctly either be
 # CIDER Analysis
 
 
-## This is our additional CIDER analysis for the Flask deliverable. Three assumptions are addressed here.
+## This is our additional CIDER analysis for the Flask deliverable. Three more assumptions are addressed here.
 
 
 ### Critique
