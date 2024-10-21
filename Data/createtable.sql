@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS anime_table;
 
 CREATE TABLE anime_table(
     Title VARCHAR(100),
-    Score float
+    Score float,
     Genre VARCHAR(125),
     AnimeType VARCHAR(6),
     AnimeLength int,
