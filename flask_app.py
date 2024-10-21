@@ -29,6 +29,7 @@ def format_html_table(indices):
                 border: 1px solid black;
                 padding: 10px;
             }</style>
+            <!""" + str(indices) + """>
            </head>
            <body>
             <h1>Filtered TV Shows</h1><br>
@@ -68,15 +69,15 @@ def filter():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
-    return filter_by_genres(query) # return the indices in the list
+    return format_html_table(filter_by_genres(query)) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):
-   return "Page not found. Remember that the URL convention is /title/(name of title) or /genres?genre=genre_to_search_by!"
+    return "Page not found. Remember that the URL convention is /title/(name of title) or /genres?genre=genre_to_search_by!"
 
 @app.errorhandler(500)
 def python_bug(e):
-   return "Uh oh! Something failed to run behind the scenes. For now you can return to the homepage, make sure the URL follows the guidelines, and contact the developers for help!"
+    return "Uh oh! Something failed to run behind the scenes. For now you can return to the homepage, make sure the URL follows the guidelines, and contact the developers for help!"
 
 
 if __name__ == "__main__":
