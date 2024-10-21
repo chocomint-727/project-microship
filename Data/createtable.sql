@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS anime_table;
 
 CREATE TABLE anime_table(
+    MAL_ID int,
     Title VARCHAR(100),
     Score float,
     Genre VARCHAR(125),
@@ -13,5 +14,6 @@ CREATE TABLE anime_table(
     Duration VARCHAR(21),
     Rating VARCHAR(30),
     Popularity int
+
 
 )
