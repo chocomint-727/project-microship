@@ -5,7 +5,7 @@ CREATE TABLE anime_table(
     Title VARCHAR(100),
     Score float,
     Genre VARCHAR(125),
-    AnimeType VARCHAR(6),
+    AnimeType VARCHAR(7),
     AnimeLength int,
     AirDate VARCHAR(28),
     Producers VARCHAR(375),
