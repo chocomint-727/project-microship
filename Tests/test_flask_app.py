@@ -87,5 +87,4 @@ class TestHomepage(unittest.TestCase):
         self.assertIn(b"[]", response)
         
 if __name__ == "__main__":  
-    load_data()  
     unittest.main()

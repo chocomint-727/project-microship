@@ -69,9 +69,9 @@ class DataSource:
             cursor = self.connection.cursor()
             
             if type(g) == list:
-                query = f"select * from anime_table where lower(genre) like '%{g[0]}%'"
+                query = f"select * from anime_table where lower(genre) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
-                    query += f"and lower(genre) like '%{gen}%'"
+                    query += f"and lower(genre) like '%{str(gen).lower()}%'"
                 query += ";"
             elif g is None:
                 query = "select * from anime_table;"

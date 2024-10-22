@@ -13,9 +13,10 @@ def get_title_info(title):
     return score, genre
 
 
-def format_html_table(indices):
-    """This is commented out because we are currently not using it. We are planning to use 
-    this function in the future."""
+def format_html_table(indices):    
+    
+    ids = [f[0] for f in indices]    
+    
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
             <title>Media Sorter</title>
@@ -23,7 +24,7 @@ def format_html_table(indices):
                 border: 1px solid black;
                 padding: 10px;
             }</style>
-            <!""" + """>
+            <!""" + str(ids) + """>
            </head>
            <body>
             <h1>Filtered TV Shows</h1><br>
@@ -65,7 +66,7 @@ def filter():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
-    return format_html_table(sql.filter(query)) # return the indices in the list
+    return format_html_table(sql.filter_by_genres(query)) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):
