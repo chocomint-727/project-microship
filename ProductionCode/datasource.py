@@ -63,18 +63,24 @@ class DataSource:
             return None
     """
         
-    def filter(self, g):
-        cursor = self.connection.cursor()
+    def filter_by_genres(self, g):
         
-        if type(g) == list:
-            query = f"select * from anime_table where lower(genre) like '%{g[0]}%'"
-            for gen in g[1:]:
-                query += f"and lower(genre) like '%{gen}%'"
-            query += ";"
-        elif g is None:
-            query = "select * from anime_table;"
+        try:
+            cursor = self.connection.cursor()
+            
+            if type(g) == list:
+                query = f"select * from anime_table where lower(genre) like '%{g[0]}%'"
+                for gen in g[1:]:
+                    query += f"and lower(genre) like '%{gen}%'"
+                query += ";"
+            elif g is None:
+                query = "select * from anime_table;"
+            
+            cursor.execute(query)
+            return cursor.fetchall()
         
-        cursor.execute(query)
-        results = cursor.fetchall()
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
         
-        return results
+        
