@@ -61,7 +61,7 @@ class DataSource:
             return None
     """
         
-    def filter(self, g):
+    def filter_by_genres(self, g):
         cursor = self.connection.cursor()
         
         if type(g) == list:
@@ -74,5 +74,9 @@ class DataSource:
         
         cursor.execute(query)
         results = cursor.fetchall()
+        
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
         
         return results
