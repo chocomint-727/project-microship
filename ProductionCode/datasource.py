@@ -1,6 +1,5 @@
 import psycopg2
-
-import psqlConfig as config
+import ProductionCode.psqlConfig as config
 
 class DataSource:
     def __init__(self):
@@ -28,7 +27,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM anime_table WHERE anime_title = %s;"
+            query = "SELECT score FROM anime_table WHERE title = '%s';"
             cursor.execute(query, (type,))
             print(cursor.fetchall())
 
@@ -36,6 +35,19 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return None
         
+    def get_genre_from_title(self, type):
+        ''' Gets score of Anime title input by user '''
+        try:
+            cursor = self.connection.cursor()
+            query = "SELECT genre FROM anime_table WHERE title = '%s';"
+            cursor.execute(query, (type,))
+            print(cursor.fetchall())
+
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
+    
+    """
     def get_title_from_score(self, type):
         ''' Gets titles that  match with score input by user. Returns a list of titles '''
         try:
@@ -47,6 +59,7 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
+    """
         
     def filter(self, g):
         cursor = self.connection.cursor()

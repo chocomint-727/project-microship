@@ -1,21 +1,15 @@
 from flask import Flask, request
 import csv
-from ProductionCode.utils import *
+from ProductionCode.datasource import *
 
 dset = []
 app = Flask(__name__)
+sql = DataSource()
 
-def load_data():
-    """ Loads data one row at a time from the dataset. """
-    global dset
-    with open("Data/command_line_testing_subset.csv", newline="") as f:
-        reader = csv.reader(f)
-        dset = [line for line in reader]
-        
 def get_title_info(title):
     ''' Helper function that gets title info from input title, returns score and genre '''
-    score = get_score(title) 
-    genre = get_genre(title)
+    score = sql.get_score_from_title(title) 
+    genre = sql.get_genre_from_title(title)
     return score, genre
 
 
@@ -29,7 +23,7 @@ def format_html_table(indices):
                 border: 1px solid black;
                 padding: 10px;
             }</style>
-            <!""" + str(indices) + """>
+            <!""" + """>
            </head>
            <body>
             <h1>Filtered TV Shows</h1><br>
@@ -37,7 +31,7 @@ def format_html_table(indices):
     
     for ix in indices:
         p += "<tr>"
-        for data in dset[ix]:
+        for data in ix:
             p += "<td>"
             p += data
             p += "</td>"
@@ -58,6 +52,8 @@ def homepage():
 def display_title_info(title):
     ''' Displays title info. If title does not exist, say it is not found in dataset '''
     score, genre = get_title_info(title)
+    print(score)
+    print(genre)
     if score is None or genre is None:
         return f"Title '{title}' not found in the dataset."
     display = f"Title:  {title} <br> Score: {str(score)} <br> Genre: {genre}"
@@ -69,7 +65,7 @@ def filter():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. """   
     query = request.args.getlist("genre") # get all args from the get request
-    return format_html_table(filter_by_genres(query)) # return the indices in the list
+    return format_html_table(sql.filter(query)) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -81,5 +77,4 @@ def python_bug(e):
 
 
 if __name__ == "__main__":
-    load_data()
     app.run(host='0.0.0.0', port=5125)
