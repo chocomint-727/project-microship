@@ -64,6 +64,8 @@ class DataSource:
     """
         
     def filter_by_genres(self, g):
+        
+        try:
         cursor = self.connection.cursor()
         
         if type(g) == list:
@@ -75,10 +77,10 @@ class DataSource:
             query = "select * from anime_table;"
         
         cursor.execute(query)
-        results = cursor.fetchall()
+        return cursor.fetchall()
         
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
         
-        return results
+        
