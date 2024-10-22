@@ -27,9 +27,10 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM anime_table WHERE title = '%s';"
+            query = "SELECT score FROM anime_table WHERE title = %s;"
             cursor.execute(query, (type,))
-            print(cursor.fetchall())
+            #print(cursor.fetchall())
+            return cursor.fetchall()[0][0]
 
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
@@ -39,9 +40,10 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT genre FROM anime_table WHERE title = '%s';"
+            query = "SELECT genre FROM anime_table WHERE title = %s;"
             cursor.execute(query, (type,))
-            print(cursor.fetchall())
+            #print(cursor.fetchall())
+            return cursor.fetchall()[0][0]
 
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
