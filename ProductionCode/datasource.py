@@ -20,7 +20,7 @@ class DataSource:
     def get_all_anime(self):
         ''' Outputs the entire dataset - currently only includes two columns: title and score '''
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM anime")
+        cursor.execute("SELECT * FROM anime_table")
         records = cursor.fetchall()
         print(records)
         
@@ -28,7 +28,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM anime WHERE anime_title = %s;"
+            query = "SELECT score FROM anime_table WHERE anime_title = %s;"
             cursor.execute(query, (type,))
             print(cursor.fetchall())
 
@@ -40,10 +40,26 @@ class DataSource:
         ''' Gets titles that  match with score input by user. Returns a list of titles '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT * FROM anime WHERE score = %s;"
+            query = "SELECT * FROM anime_table WHERE score = %s;"
             cursor.execute(query, (type,))
             print(cursor.fetchall())
 
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
+        
+    def filter(self, g):
+        cursor = self.connection.cursor()
+        
+        if type(g) == list:
+            query = f"select * from anime_table where lower(genres) like '%{g[0]}%'"
+            for gen in g[1:]:
+                query += f"and lower(genres) like '%{gen}%'"
+            query += ";"
+        elif g is None:
+            query = "select * from anime_table;"
+        
+        cursor.execute(query)
+        results = cursor.fetchall()
+        
+        return results
