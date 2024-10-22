@@ -19,7 +19,7 @@ class DataSource:
     def get_all_anime(self):
         ''' Outputs the entire dataset - currently only includes two columns: title and score '''
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM anime_table")
+        cursor.execute("SELECT * FROM test_table")
         records = cursor.fetchall()
         print(records)
         
@@ -27,7 +27,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM anime_table WHERE title = %s;"
+            query = "SELECT score FROM test_table WHERE title = %s;"
             cursor.execute(query, (type,))
             #print(cursor.fetchall())
             return cursor.fetchall()[0][0]
@@ -40,7 +40,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT genre FROM anime_table WHERE title = %s;"
+            query = "SELECT genre FROM test_table WHERE title = %s;"
             cursor.execute(query, (type,))
             #print(cursor.fetchall())
             return cursor.fetchall()[0][0]
@@ -69,12 +69,12 @@ class DataSource:
             cursor = self.connection.cursor()
             
             if type(g) == list:
-                query = f"select * from anime_table where lower(genre) like '%{str(g[0]).lower()}%'"
+                query = f"select * from test_table where lower(genre) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
                     query += f"and lower(genre) like '%{str(gen).lower()}%'"
                 query += ";"
             elif g is None:
-                query = "select * from anime_table;"
+                query = "select * from test_table;"
             
             cursor.execute(query)
             return cursor.fetchall()
