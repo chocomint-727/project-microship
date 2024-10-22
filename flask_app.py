@@ -33,7 +33,7 @@ def format_html_table(indices):
         p += "<tr>"
         for data in ix:
             p += "<td>"
-            p += data
+            p += str(data)
             p += "</td>"
         p += "</tr>"
     
