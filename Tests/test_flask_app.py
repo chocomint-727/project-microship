@@ -70,14 +70,14 @@ class TestHomepage(unittest.TestCase):
         """
         self.app = app.test_client()
         response = self.app.get("/genres?genre=comedy&genre=drama").data
-        self.assertIn(b"[1, 5]", response)
+        self.assertIn(b"[1, 6, 16]", response)
  
     def test_no_genre(self):
         """Tests the filter_by_genre function with no inputted genres
         """
         self.app = app.test_client()
         response = self.app.get("/genres").data
-        self.assertIn(b"[0, 1, 2, 3, 4, 5, 6, 7, 8]", response)
+        self.assertIn(b"[1, 5, 6, 7, 8, 15, 16, 17, 18, 19]", response)
     
     def test_nonexistant_genre(self):
         """Tests the filter_by_genre function with one invalid genre

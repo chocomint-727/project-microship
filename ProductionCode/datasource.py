@@ -21,7 +21,7 @@ class DataSource:
         cursor = self.connection.cursor()
         cursor.execute("SELECT * FROM test_table")
         records = cursor.fetchall()
-        print(records)
+        return records
         
     def get_score_from_title(self, type):
         ''' Gets score of Anime title input by user '''
@@ -33,7 +33,8 @@ class DataSource:
             return cursor.fetchall()[0][0]
 
         except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
+            print ("Something went wrong when executing the query in get_score_from_title: ", e)
+            print(type)
             return None
         
     def get_genre_from_title(self, type):
@@ -46,7 +47,8 @@ class DataSource:
             return cursor.fetchall()[0][0]
 
         except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
+            print ("Something went wrong when executing the query in get_genre_from_title: ", e)
+            print(type)
             return None
     
     """
@@ -68,12 +70,12 @@ class DataSource:
         try:
             cursor = self.connection.cursor()
             
-            if type(g) == list:
+            try:
                 query = f"select * from test_table where lower(genre) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
                     query += f"and lower(genre) like '%{str(gen).lower()}%'"
                 query += ";"
-            elif g is None:
+            except IndexError:
                 query = "select * from test_table;"
             
             cursor.execute(query)

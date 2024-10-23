@@ -27,6 +27,7 @@ def format_html_table(indices):
                 border-spacing: 10px;
                 padding: 10px;
                 background-color: white;
+                text-align: center;
             }
             td:hover {
                 background-color: coral;
@@ -60,8 +61,6 @@ def homepage():
 def display_title_info(title):
     ''' Displays title info. If title does not exist, say it is not found in dataset '''
     score, genre = get_title_info(title)
-    print(score)
-    print(genre)
     if score is None or genre is None:
         return f"Title '{title}' not found in the dataset."
     display = f"Title:  {title} <br> Score: {str(score)} <br> Genre: {genre}"
