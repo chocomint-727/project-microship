@@ -14,6 +14,7 @@ CREATE TABLE anime_table(
     Duration VARCHAR(21),
     Rating VARCHAR(30),
     Popularity int
-
-
 )
+
+
+-- create table test_table as (select * from anime_table limit 10);

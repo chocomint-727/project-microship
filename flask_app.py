@@ -20,9 +20,16 @@ def format_html_table(indices):
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
             <title>Media Sorter</title>
-            <style> table, td {
+            <style> td {
+                cursor: pointer;
                 border: 1px solid black;
+                border-radius: 15px;
+                border-spacing: 10px;
                 padding: 10px;
+                background-color: white;
+            }
+            td:hover {
+                background-color: coral;
             }</style>
             <!""" + str(ids) + """>
            </head>
@@ -78,4 +85,4 @@ def python_bug(e):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5125)
+    app.run(host='0.0.0.0', port=5135)
