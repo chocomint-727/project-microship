@@ -63,7 +63,7 @@ class TestHomepage(unittest.TestCase):
         """
         self.app = app.test_client()
         response = self.app.get("/genres?genre=comedy").data
-        self.assertIn(b"[1, 4, 5, 6]", response)
+        self.assertIn(b"[1, 6, 15, 16, 17]", response)
     
     def test_multiple_genre(self):
         """Tests the filter_by_genre function with more than one valid genre
