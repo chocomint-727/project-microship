@@ -20,23 +20,44 @@ def format_html_table(indices):
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
             <title>Media Sorter</title>
-            <style> td {
+            <style> tr {
                 cursor: pointer;
                 border: 1px solid black;
-                border-radius: 15px;
-                border-spacing: 10px;
-                padding: 10px;
                 background-color: white;
-                text-align: center;
             }
-            td:hover {
-                background-color: coral;
-            }</style>
+            tr:hover {
+                background: coral;
+            }
+            table {
+                border-collapse: separate;
+                border-spacing: 0px 10px;
+            }
+            td {
+                padding: 15px;
+                text-align: center;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            td:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-top: 1px solid black;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            td:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            </style>
             <!""" + str(ids) + """>
            </head>
            <body>
             <h1>Filtered TV Shows</h1><br>
-           <table>"""
+           <table cellspacing=0>"""
     
     for ix in indices:
         p += "<tr>"
