@@ -19,6 +19,6 @@ parser.add_argument("--title", type=str)
 args = parser.parse_args()
 
 if args.genres is not None:
-    print(sql.filter_by_genres(args.genres))
+    print([i[0] for i in sql.filter_by_genres(args.genres)]) # command line functionality is the same, meaning that it only returns the MAL_IDs from the db query
 elif args.title is not None:
     print(sql.get_score_from_title(args.title))

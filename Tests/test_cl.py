@@ -38,7 +38,7 @@ class TestClass(unittest.TestCase):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Action"],
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), '[0, 1, 2, 4, 7]')
+         self.assertEqual(output.strip(), '[1, 5, 6, 7, 15, 18]')
          expectedCode.terminate()
 
     def test_filter_by_genre_invalid_genre(self):
@@ -62,7 +62,7 @@ class TestClass(unittest.TestCase):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "Drama", "Horror", "Mystery", "Police", "Psychological", "Seinen", "Thriller"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), '[8]')
+         self.assertEqual(output.strip(), '[19]')
          expectedCode.terminate()
          
     def test_filter_by_genres_no_input(self):
@@ -70,7 +70,7 @@ class TestClass(unittest.TestCase):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", ""],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), '[0, 1, 2, 3, 4, 5, 6, 7, 8]')
+         self.assertEqual(output.strip(), '[1, 5, 6, 7, 8, 15, 16, 17, 18, 19]')
          expectedCode.terminate()
          
     def test_filter_by_genres_no_combination(self):
@@ -86,7 +86,7 @@ class TestClass(unittest.TestCase):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--genres", "AcTIon"],
                                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), '[0, 1, 2, 4, 7]')
+         self.assertEqual(output.strip(), '[1, 5, 6, 7, 15, 18]')
          expectedCode.terminate()
 
 if __name__ == "__main__":
