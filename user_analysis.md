@@ -64,5 +64,35 @@ We can do research on how the data was collected and provide a page that explain
 
 
 
+# CIDER Analysis
+
+
+## This is our additional CIDER analysis for the Database deliverable. Three more assumptions are addressed below.
+
+
+### Critique
+The dataset assumes that the users know the distinctions between anime sources: original, light novel, manga, web manga, 4-koma manga, visual novel, game, and picture book. 
+Our dataset also assumes that users are interested in anime that are from the year 2020 or prior, which is when it was last updated. 
+
+
+### Imagine
+Users who are not aware of the anime source distinctions might not be able to benefit from its inclusion as a variable in the dataset; i.e., if a user does not know what anime source being manga is, they would not potentially benefit from looking up the manga version of the anime. 
+Users that wish to search for animes from 2021 or later would be excluded by our website because there are none of these shows that exist in the database we are using, except for those that started in 2020 or prior and continued to 2021 or later. However, our database does not denote any of these said shows.
+
+
+### Design
+We can add a glossary of anime source terms to the website explaining what they mean. For example, the website should explain what manga is (essentially a Japanese comic book) and that the source being manga means that there is a comic book version of the anime out there with the same name. This would help out users who are unfamiliar with anime source names.
+Additionally, to help include users that are looking for anime from 2021 or later, we could add anime that started in 2021 or later and update the air date for anime that started prior to 2020 but continued to at least 2021.
+
+
+### Expand
+ We have learned about how many websites assume some sort of baseline knowledge of the content that they contain. Consequently, we have learned the importance of explaining terms that, on their own, might exclude some users who are not familiar with the subject matter of the website we are designing. In our case, users who are not familiar with the names of animation studios would be excluded by our dataset if they are looking for a specific animation style.
+
+
+### Repeat
+Users that are looking for a specific animation style but are not familiar with the name of animation studios would be excluded because studios tend to have their own signature animation style. Therefore, if a user is only familiar with an animation style that they like and not a studio name, they may have trouble finding a particular animation style in our dataset when we eventually implement a feature allowing users to filter by studio. To help address this, we can create a table of all of the animation studios in our dataset with a brief description of their animation style, which we could display on a page on our website which can be accessed via a button on the homepage. This would allow the previously excluded users being discussed to figure out which studio(s) they are looking for.
+
+
+
 ---
 
