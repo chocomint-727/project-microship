@@ -19,13 +19,28 @@ def format_html_table(indices):
     """ Implement an html table for displaying multiple rows at the same time """
     p = """<head>
             <title>Media Sorter</title>
-            <style> tr {
+            <style> 
+            @keyframes grow_on_hover{
+                from {
+                    transform: scale(1);
+                    background-color: white;
+                }
+                to {
+                    transform: scale(1.1);
+                    background-color: coral;
+                }
+            }
+            tr {
                 cursor: pointer;
                 border: 1px solid black;
-                background-color: white;
+                animation-name: grow_on_hover;
+                animation-duration: 0.25s;
+                animation-timing-function: ease-in-out;
+                animation-direction: reverse;
+                animation-fill-mode: forwards;
             }
             tr:hover {
-                background: coral;
+                animation-direction: normal;
             }
             table {
                 border-collapse: separate;
