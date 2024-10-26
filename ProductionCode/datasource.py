@@ -38,12 +38,11 @@ class DataSource:
             return None
         
     def get_genre_from_title(self, type):
-        ''' Gets score of Anime title input by user '''
+        ''' Gets score of anime title input by user '''
         try:
             cursor = self.connection.cursor()
             query = "SELECT genre FROM test_table WHERE title = %s;"
             cursor.execute(query, (type,))
-            #print(cursor.fetchall())
             return cursor.fetchall()[0][0]
 
         except Exception as e:
@@ -51,7 +50,7 @@ class DataSource:
             print(type)
             return None
     
-    """
+    """ This method may be used in the future.
     def get_title_from_score(self, type):
         ''' Gets titles that  match with score input by user. Returns a list of titles '''
         try:
@@ -66,7 +65,7 @@ class DataSource:
     """
         
     def filter_by_genres(self, g):
-        
+        '''This filters the table by a specific genre or multiple genres and displays them.'''
         try:
             cursor = self.connection.cursor()
             
