@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import csv
 from ProductionCode.datasource import *
 
@@ -107,7 +107,8 @@ def filter():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route. '''
     query = request.args.getlist("genre") # get all args from the get request
-    return format_html_table(sql.filter_by_genres(query)) # return the indices in the list
+    res=sql.filter_by_genres(query)
+    return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):
