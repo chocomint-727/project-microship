@@ -1,0 +1,66 @@
+
+<html>
+    <head>
+        <title>Media Sorter</title>
+        <style> 
+            @keyframes grow_on_hover{
+                from {
+                    transform: scale(1);
+                    background-color: white;
+                }
+                to {
+                    transform: scale(1.1);
+                    background-color: coral;
+                }
+            }
+            tr {
+                cursor: pointer;
+                border: 1px solid black;
+                animation-name: grow_on_hover;
+                animation-duration: 0.25s;
+                animation-timing-function: ease-in-out;
+                animation-direction: reverse;
+                animation-fill-mode: forwards;
+            }
+            tr:hover {
+                animation-direction: normal;
+            }
+            table {
+                border-collapse: separate;
+                border-spacing: 0px 10px;
+            }
+            td {
+                padding: 15px;
+                text-align: center;
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            td:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+                border-top: 1px solid black;
+                border-left: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+            td:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-top: 1px solid black;
+                border-right: 1px solid black;
+                border-bottom: 1px solid black;
+            }
+        </style>
+    <!""" + {{ids}}+ """>
+    </head>
+    <body>
+        <h1>Filtered TV Shows</h1><br>
+        <table cellspacing=0>
+            {{% for ix in indices %}}
+            <tr> {{% for data in ix %}} 
+                <td>{{ data }}</td>
+                {{% endfor %}}
+            </tr>
+            {{% endfor %}}
+        </table>
+    </body>
+</html>

@@ -1,20 +1,43 @@
 DROP TABLE IF EXISTS anime_table;
+DROP TABLE IF EXISTS test_table;
+DROP TABLE IF EXISTS sourcekey;
+DROP TABLE IF EXISTS ratingkey;
+DROP TABLE IF EXISTS typekey;
 
 CREATE TABLE anime_table(
-    MAL_ID int,
-    Title VARCHAR(100),
-    Score float,
-    Genre VARCHAR(125),
-    AnimeType VARCHAR(7),
-    AnimeLength int,
-    AirDate VARCHAR(28),
-    Producers VARCHAR(375),
-    Studio VARCHAR(80),
-    Source VARCHAR(13),
-    Duration VARCHAR(21),
-    Rating VARCHAR(30),
-    Popularity int
-)
+    mal_id int PRIMARY KEY,
+    name varchar(100),
+    score float,
+    genres varchar(125),
+    type_lookup int,
+    episodes int, 
+    aired varchar(28),
+    producers varchar(375),
+    studios varchar(80),
+    source_lookup int,
+    duration varchar(21),
+    rating_lookup int,
+    popularity int
+);
 
+CREATE TABLE ratingkey (
+    rating_lookup int PRIMARY KEY,
+    rating varchar(30)
+);
 
--- create table test_table as (select * from anime_table limit 10);
+CREATE TABLE sourcekey (
+    source_lookup int PRIMARY KEY,
+    source varchar(13)
+);
+
+CREATE TABLE typekey (
+    type_lookup int PRIMARY KEY,
+    type varchar(7)
+);
+
+\copy anime_table from 'anime_edited.csv' with(format csv, null 'Unknown');
+\copy ratingkey from 'ratingkey.csv' csv;
+\copy sourcekey from 'sourcekey.csv' csv;
+\copy typekey from 'typekey.csv' csv;
+
+CREATE TABLE test_table as select * from anime_table limit 100;

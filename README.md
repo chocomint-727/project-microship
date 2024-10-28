@@ -7,6 +7,10 @@ NAMES:
 - Omar Sobhy
 - Matthew Hall
 
+
+# Comments for the Database Deliverable
+We kept all of the columns in the dataset because all of the information in these columns is displayed when users filter by genres in order to give them the most information possible about those anime. We also may make functions to filter by at least some of these other columns in the future.
+
 # Command Line App Instructions
 The command line app has two functionalities at the moment:
 - Filtering by genres
