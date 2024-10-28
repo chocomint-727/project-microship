@@ -40,4 +40,4 @@ CREATE TABLE typekey (
 \copy sourcekey from 'sourcekey.csv' csv;
 \copy typekey from 'typekey.csv' csv;
 
-CREATE TABLE test_table as select * from anime_table limit 100;
+CREATE TABLE test_table as select * from anime_table limit 10;

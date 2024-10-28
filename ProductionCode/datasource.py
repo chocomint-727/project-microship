@@ -27,7 +27,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM test_table WHERE title = %s;"
+            query = "SELECT score FROM test_table WHERE name = %s;"
             cursor.execute(query, (type,))
             #print(cursor.fetchall())
             return cursor.fetchall()[0][0]
@@ -41,7 +41,7 @@ class DataSource:
         ''' Gets score of anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT genre FROM test_table WHERE title = %s;"
+            query = "SELECT genres FROM test_table WHERE name = %s;"
             cursor.execute(query, (type,))
             return cursor.fetchall()[0][0]
 
@@ -70,9 +70,9 @@ class DataSource:
             cursor = self.connection.cursor()
             
             try:
-                query = f"select * from test_table where lower(genre) like '%{str(g[0]).lower()}%'"
+                query = f"select * from test_table where lower(genres) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
-                    query += f"and lower(genre) like '%{str(gen).lower()}%'"
+                    query += f"and lower(genres) like '%{str(gen).lower()}%'"
                 query += ";"
             except IndexError:
                 query = "select * from test_table;"
