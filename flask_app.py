@@ -23,34 +23,51 @@ def format_html_table(indices):
             @keyframes grow_on_hover{
                 from {
                     transform: scale(1);
-                    background-color: white;
+                    background-color: rgb(125,125,155);
                 }
                 to {
                     transform: scale(1.1);
-                    background-color: coral;
+                    background-color: rgb(155,155,175);
+                }
+            }
+            @keyframes shrink_on_hover{
+                from {
+                    transform: scale(1.1);
+                    background-color: rgb(155,155,175);
+                }
+                to {
+                    transform: scale(1);
+                    background-color: rgb(125,125,155);
                 }
             }
             tr {
                 cursor: pointer;
                 border: 1px solid black;
-                animation-name: grow_on_hover;
-                animation-duration: 0.25s;
+                animation-name: shrink_on_hover;
+                animation-duration: .25s;
                 animation-timing-function: ease-in-out;
-                animation-direction: reverse;
                 animation-fill-mode: forwards;
+                height: auto;
             }
             tr:hover {
-                animation-direction: normal;
+                animation-duration: .25s;
+                animation-name: grow_on_hover;
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards;
             }
             table {
-                border-collapse: separate;
                 border-spacing: 0px 10px;
+                border-collapse: separate;
+                width: 85%;
+                margin-left: auto;
+                margin-right: auto;
             }
             td {
                 padding: 15px;
                 text-align: center;
                 border-top: 1px solid black;
                 border-bottom: 1px solid black;
+                
             }
             td:first-child {
                 border-top-left-radius: 10px;
@@ -65,6 +82,11 @@ def format_html_table(indices):
                 border-top: 1px solid black;
                 border-right: 1px solid black;
                 border-bottom: 1px solid black;
+            }
+            html {
+                font-family: "Lexend Deca";
+                background-color: rgb(75,75,75);
+                color: white;
             }
             </style>
             <!""" + str(ids) + """>
