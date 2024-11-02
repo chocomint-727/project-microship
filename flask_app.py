@@ -113,7 +113,7 @@ def title():
     args = request.args.getlist("title")
     ''' Interacts with the filter by genres function. 
         Employs a helper method to grab the thumbnail image on this page'''
-    res=sql.get_data_from_title()
+    res=sql.get_data_from_title(args[0])
     img = getImage(res[0], res[1])
     return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
 
