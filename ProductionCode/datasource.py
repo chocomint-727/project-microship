@@ -75,7 +75,8 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return None
         
-    def get_Random_Anime(self):
+    def get_random_anime(self):
+        ''' Returns one random anime entry from the table '''
         try: 
             cursor = self.connection.cursor()
             

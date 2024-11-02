@@ -45,7 +45,7 @@ def title():
 @app.route("/random")
 def randomAnime():
     ''' Renders page for a random anime by calling get_Random_Anime '''
-    res = sql.get_Random_Anime()[0]
+    res = sql.get_random_anime()[0]
     print(res)
     img = getImage(res[0], res[1])
     return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
