@@ -19,7 +19,7 @@ class DataSource:
     def get_all_anime(self):
         ''' Outputs the entire dataset - currently only includes two columns: title and score '''
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM test_table")
+        cursor.execute("SELECT * FROM anime_table")
         records = cursor.fetchall()
         return records
     
@@ -27,7 +27,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT * FROM test_table WHERE lower(name) = %s;"
+            query = "SELECT * FROM anime_table WHERE lower(name) = %s;"
             cursor.execute(query, (type.lower(),))
             #print(cursor.fetchall())
             return cursor.fetchall()[0]
@@ -41,7 +41,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM test_table WHERE name = %s;"
+            query = "SELECT score FROM anime_table WHERE name = %s;"
             cursor.execute(query, (type,))
             #print(cursor.fetchall())
             return cursor.fetchall()[0][0]
@@ -55,7 +55,7 @@ class DataSource:
         ''' Gets score of anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT genres FROM test_table WHERE name = %s;"
+            query = "SELECT genres FROM anime_table WHERE name = %s;"
             cursor.execute(query, (type,))
             return cursor.fetchall()[0][0]
 
@@ -81,7 +81,7 @@ class DataSource:
     
     def fuzzy_match_name(self, title):
         cursor = self.connection.cursor()
-        query = "SELECT * FROM test_table WHERE levenshtein(name, %s) <= 5 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
+        query = "SELECT * FROM anime_table WHERE levenshtein(name, %s) <= 2 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
         cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))
         #print(cursor.fetchall())
         return cursor.fetchall()
@@ -93,12 +93,12 @@ class DataSource:
             cursor = self.connection.cursor()
             
             try:
-                query = f"select * from test_table where lower(genres) like '%{str(g[0]).lower()}%'"
+                query = f"select * from anime_table where lower(genres) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
                     query += f"and lower(genres) like '%{str(gen).lower()}%'"
                 query += ";"
             except IndexError:
-                query = "select * from test_table;"
+                query = "select * from anime_table;"
             
             cursor.execute(query)
             return cursor.fetchall()

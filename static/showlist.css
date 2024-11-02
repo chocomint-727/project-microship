@@ -1,13 +1,22 @@
+html {
+    font-family: 'Mina';
+    color: blanchedalmond;
+    /* background:linear-gradient(rgba(255, 162, 162, 0.55), rgba(255, 170, 170, 0.55)), url(https://i.ibb.co/rs0xHyh/cherry-blossom-tree-blurred.gif); */
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-color: rgb(20, 20, 20);
+}
+
 tr {
     cursor: pointer;
     border: 1px solid black;
     transition-duration: .1s;
-    background-color: rgb(125, 125, 155);
+    background-color: rgb(75, 75, 85);
     height: auto;
 }
 
 tr:hover {
-    background-color: rgb(155, 155, 175);
+    background-color: rgb(105, 105, 125);
     transition-duration: .1s;
     scale: 1.1;
 }
@@ -41,10 +50,4 @@ td:last-child {
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-}
-
-html {
-    font-family: "Lexend Deca";
-    background-color: rgb(75, 75, 75);
-    color: white;
 }
