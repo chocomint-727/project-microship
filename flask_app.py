@@ -48,16 +48,12 @@ def home():
     '''Render the homepage. Not much else to say'''
     return render_template("homepage.html")
 
-
-
 @app.route("/random")
 def randomAnime():
     res = sql.get_Random_Anime()[0]
     print(res)
     img = getImage(res[0], res[1])
     return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
-
-    
 
 @app.route("/genres")
 def filter(): 
@@ -70,12 +66,11 @@ def filter():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return "Page not found. Remember that the URL convention is /title/(name of title) or /genres?genre=(genres to search by) <br> For example, /title/Trigun returns score and genre of an Anime with the title Trigun <br> /genres?genre=Action returns a table of Anime titles whose genre is action <br> /genres?genre=Action&genre=Comedy returns a table of Anime titles whose genre is action AND comedy!"
+    return render_template("error404.html")
 
 @app.errorhandler(500)
 def python_bug(e):
-    return "Uh oh! Something failed to run behind the scenes. For now you can return to the homepage, make sure the URL follows the guidelines, and contact the developers for help!"
-
+    return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5135)
+    app.run(host='0.0.0.0', port=5125)

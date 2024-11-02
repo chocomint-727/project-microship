@@ -26,6 +26,21 @@ p {
     display: inline;
 }
 
+p.error {
+    font-size: 0.9em;
+}
+
+p.error-extra {
+    font-size: 0.5em;
+
+}
+
+p.error-extra2 {
+    font-size: 0.4em;
+}
+
+
+
 input {
     text-align: center;
     font-family: 'Mina';
@@ -95,6 +110,11 @@ form {
     width: 100%; 
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .title {
