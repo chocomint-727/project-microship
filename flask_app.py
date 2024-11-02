@@ -109,7 +109,7 @@ def format_html_table(indices):
     return p
 
 @app.route("/title")
-def filter(): 
+def title(): 
     args = request.args.getlist("title")
     ''' Interacts with the filter by genres function. 
         Employs a helper method to grab the thumbnail image on this page'''
