@@ -108,6 +108,16 @@ def format_html_table(indices):
     p += "</table></body>"
     return p
 
+@app.route("/search")
+def search(): 
+    ''' Interacts with the filter by genres function. 
+        Because this function takes an arbitrary amount of arguments,
+        get request parameters are used rather than a route. '''
+    query = request.args.getlist("title")[0] # get all args from the get request
+    res=sql.fuzzy_match_name(query)
+    print(res)
+    return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
+
 @app.route("/title")
 def title(): 
     args = request.args.getlist("title")

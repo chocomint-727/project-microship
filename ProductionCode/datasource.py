@@ -27,8 +27,8 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT * FROM test_table WHERE name = %s;"
-            cursor.execute(query, (type,))
+            query = "SELECT * FROM test_table WHERE lower(name) = %s;"
+            cursor.execute(query, (type.lower(),))
             #print(cursor.fetchall())
             return cursor.fetchall()[0]
 
@@ -36,7 +36,7 @@ class DataSource:
             print ("Something went wrong when executing the query in get_score_from_title: ", e)
             print(type)
             return None
-        
+    """
     def get_score_from_title(self, type):
         ''' Gets score of Anime title input by user '''
         try:
@@ -63,6 +63,7 @@ class DataSource:
             print ("Something went wrong when executing the query in get_genre_from_title: ", e)
             print(type)
             return None
+    """
     
     """ This method may be used in the future.
     def get_title_from_score(self, type):
@@ -77,6 +78,15 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return None
     """
+    
+    def fuzzy_match_name(self, title):
+
+        cursor = self.connection.cursor()
+        query = "SELECT * FROM test_table WHERE levenshtein(name, %s) <= 5 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
+        cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))
+        #print(cursor.fetchall())
+        return cursor.fetchall()
+
         
     def filter_by_genres(self, g):
         '''This filters the table by a specific genre or multiple genres and displays them.'''
