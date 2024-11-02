@@ -102,3 +102,26 @@ tr.categories {
 .morelike {
     flex: auto;
 }
+
+.goback {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.goback button {
+    background-color: #5C4D6A; 
+    color: #E8DDB5;
+    border: 2px solid #8C78A8; 
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Mina';
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.goback button:hover {
+    background-color: #8C78A8;
+    color: #1E1E1E; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
