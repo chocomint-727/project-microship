@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-import csv
 from ProductionCode.datasource import *
 from bs4 import BeautifulSoup
 import requests
@@ -18,7 +17,8 @@ def getImage(id, title):
 @app.route("/")
 def home():
     ''' Renders the homepage. Not much else to say '''
-    return render_template("homepage.html")
+    animes = sql.get_all_titles()
+    return render_template("homepage.html", animes=animes)
 
 @app.route("/search")
 def search(): 

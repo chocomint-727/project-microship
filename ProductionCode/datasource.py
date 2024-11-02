@@ -23,6 +23,17 @@ class DataSource:
         records = cursor.fetchall()
         return records
     
+    def get_all_titles(self):    
+        ''' Retrieves and returns a list of all anime titles from the table '''
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT name FROM anime_table")
+            titles = [record[0] for record in cursor.fetchall()]
+            return titles
+        except Exception as e:
+            print("Something went wrong when executing the query in get_all_titles: ", e)
+            return None
+
     def get_data_from_title(self, type):
         ''' Gets score of Anime title input by user '''
         try:
@@ -36,56 +47,13 @@ class DataSource:
             print ("Something went wrong when executing the query in get_score_from_title: ", e)
             print(type)
             return None
-    """
-    def get_score_from_title(self, type):
-        ''' Gets score of Anime title input by user '''
-        try:
-            cursor = self.connection.cursor()
-            query = "SELECT score FROM anime_table WHERE name = %s;"
-            cursor.execute(query, (type,))
-            #print(cursor.fetchall())
-            return cursor.fetchall()[0][0]
 
-        except Exception as e:
-            print ("Something went wrong when executing the query in get_score_from_title: ", e)
-            print(type)
-            return None
-        
-    def get_genre_from_title(self, type):
-        ''' Gets score of anime title input by user '''
-        try:
-            cursor = self.connection.cursor()
-            query = "SELECT genres FROM anime_table WHERE name = %s;"
-            cursor.execute(query, (type,))
-            return cursor.fetchall()[0][0]
-
-        except Exception as e:
-            print ("Something went wrong when executing the query in get_genre_from_title: ", e)
-            print(type)
-            return None
-    """
-    
-    """ This method may be used in the future.
-    def get_title_from_score(self, type):
-        ''' Gets titles that  match with score input by user. Returns a list of titles '''
-        try:
-            cursor = self.connection.cursor()
-            query = "SELECT * FROM anime_table WHERE score = %s;"
-            cursor.execute(query, (type,))
-            print(cursor.fetchall())
-
-        except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
-            return None
-    """
-    
     def fuzzy_match_name(self, title):
         cursor = self.connection.cursor()
         query = "SELECT * FROM anime_table WHERE levenshtein(name, %s) <= 2 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
         cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))
         #print(cursor.fetchall())
         return cursor.fetchall()
-
         
     def filter_by_genres(self, g):
         '''This filters the table by a specific genre or multiple genres and displays them.'''
@@ -123,5 +91,3 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
-        
-            

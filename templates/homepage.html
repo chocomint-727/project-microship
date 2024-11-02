@@ -3,6 +3,10 @@
         <title>Next Episode</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='homepage.css') }}>
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">        
+    
     </head>
     <body>
         <header>
@@ -23,6 +27,18 @@
             <div class="search">
                 <form action="/search">
                     <label for="searchbar">Search Bar</label><input id="searchbar" type="text" name="title" class="bar" placeholder="Search" />
+                    <script>
+                        $(document).ready(function() {
+                            var availableTags = [
+                                {% for anime in animes %}
+                                    "{{ anime }}",
+                                {% endfor %}
+                            ];
+                            $("#searchbar").autocomplete({
+                                source: availableTags,
+                                minLength: 3,
+                            });
+                        });                                            </script>                
                     <label for="submitbutton">Submit</label><input id="submitbutton" type="submit" class="submit" value=""></input>
                 </form>
             </div>
