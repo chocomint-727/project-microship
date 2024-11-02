@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template
 import csv
 from ProductionCode.datasource import *
+from bs4 import BeautifulSoup
+import requests
 
 dset = []
 app = Flask(__name__)
@@ -106,6 +108,31 @@ def format_html_table(indices):
     p += "</table></body>"
     return p
 
+@app.route("/title")
+def filter(): 
+    args = request.args.getlist("title")
+    ''' Interacts with the filter by genres function. 
+        Employs a helper method to grab the thumbnail image on this page'''
+    res=sql.get_data_from_title()
+    img = getImage(res[0], res[1])
+    return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+
+def getImage(id, title):
+    '''
+    Scrapes the MAL page to grab the image using ID and title
+    '''
+    r = requests.get(f"https://myanimelist.net/anime/{id}")
+    soup = BeautifulSoup(r.content, features="html.parser")
+    img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
+    return img
+
+@app.route("/")
+def home():
+    '''Render the homepage. Not much else to say'''
+    return render_template("homepage.html")
+
+
+"""
 @app.route('/')
 def homepage():
     ''' Returns what is to be displayed on the homepage. '''
@@ -113,6 +140,7 @@ def homepage():
     display = "Welcome to the homepage! Type in '/title/(title)/' where (title) is the name of the show (without brackets) to get information about an anime! For example, /title/Trigun returns score and genre of an Anime with the title Trigun <br>  <br> Titles you can try: <br> " + titles
     display += "<br><br>To search for shows by their genres, use/genres?genre=(genres to search by) <br> /genres?genre=Action returns a table of Anime titles whose genre is action <br> /genres?genre=Action&genre=Comedy returns a table of Anime titles whose genre is action AND comedy"
     return display
+
 
 @app.route('/title/<title>/', strict_slashes = False)
 def display_title_info(title):
@@ -122,6 +150,7 @@ def display_title_info(title):
         return f"Title '{title}' not found in the dataset."
     display = f"Title:  {title} <br> Score: {str(score)} <br> Genre: {genre}"
     return display
+"""
 
 @app.route("/genres")
 def filter(): 
