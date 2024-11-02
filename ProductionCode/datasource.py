@@ -80,7 +80,6 @@ class DataSource:
     """
     
     def fuzzy_match_name(self, title):
-
         cursor = self.connection.cursor()
         query = "SELECT * FROM test_table WHERE levenshtein(name, %s) <= 5 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
         cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))

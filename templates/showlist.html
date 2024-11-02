@@ -6,14 +6,19 @@
     <!""" + {{ids}}+ """>
     </head>
     <body>
-        <h1>Filtered TV Shows</h1><br>
+        <h1>Filtered TV Shows</h1>
+        <br>
         <table cellspacing=0>
-            {% for ix in indices %}
-            <tr> {% for data in ix %}
-                <td>{{ data }}</td>
+            <tbody>
+                {% for ix in indices %}
+                    <tr onclick='window.location = "/title?title={{ix[1]}}"'> 
+                        {% for data in ix %}
+                            <td>{{ data }}</td>
+                        </a>
+                        {% endfor %}  
+                    </tr>
                 {% endfor %}
-            </tr>
-            {% endfor %}
+            </tbody>
         </table>
     </body>
 </html>
