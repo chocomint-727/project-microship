@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Data for {{ info[1] }}</title>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='singleshowstyle.css') }}>
+        <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
+    </head>
+    <body>
+        <div class="contain">
+            <div class="left">
+                <div class="imgcontainer">
+                    <img src={{ imageLink }} alt={{ info[1] }}>
+                </div>
+                <div class="titlecontainter">
+                    <h1>{{ info[1] }}</h1>
+                </div>
+            </div>
+            <div class="right">
+                <div class="info">
+                    <table cellspacing=0>
+                        <col style="width:25%" span="4" />
+                        <tr class="categories">
+                            <td class="categories">MAL ID</td>
+                            <td class="categories">Score</td>
+                            <td class="categories">Genres</td>
+                            <td class="categories">Popularity</td>
+                        </tr>
+                        <tr>
+                            <td class="data">{{info[0]}}</td>
+                            <td class="data">{{info[2]}}</td>
+                            <td class="data">{{info[3]}}</td>
+                            <td class="data">{{info[12]}}</td>
+                        </tr>
+                    </table>
+                    <table cellspacing=0>
+                        <tr class="categories">
+                            <td class="categories">Episodes</td>
+                            <td class="categories">Duration</td>
+                            <td class="categories">Content Rating</td>
+                            <td class="categories">Type</td>
+                        </tr>
+                        <tr>
+                            <td class="data">{{info[5]}}</td>
+                            <td class="data">{{info[10]}}</td>
+                            <td class="data">{{info[11]}}</td>
+                            <td class="data">{{info[4]}}</td>
+                        </tr>
+                    </table>
+                    <table cellspacing=0>
+                        <tr class="categories">
+                            <td class="categories">Producers</td>
+                            <td class="categories">Studios</td>
+                            <td class="categories">Source</td>
+                            <td class="categories">Air Dates</td>
+                        </tr>
+                        <tr>
+                            <td class="data">{{info[8]}}</td>
+                            <td class="data">{{info[7]}}</td>
+                            <td class="data">{{info[9]}}</td>
+                            <td class="data">{{info[6]}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="morelike">
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

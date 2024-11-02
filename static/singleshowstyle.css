@@ -1,0 +1,104 @@
+html {
+    font-family: 'Mina';
+    color: blanchedalmond;
+    background-color: rgb(20, 20, 20);
+}
+
+div {
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 2%;
+    overflow: auto;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    padding: 2%;
+    table-layout: fixed;
+    border-spacing: 0px;
+}
+
+td {
+    text-align: center;
+    border-collapse: collapse;
+    padding: 1%;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-right: 1px dashed gray;
+    border-left: 1px dashed gray;
+    background-color: rgb(50, 50, 65);
+}
+
+td.categories:first-child {
+    border-top-left-radius: 10px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+td.data:first-child {
+    border-bottom-left-radius: 10px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+td.categories:last-child {
+    border-top-right-radius: 10px;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+td.data:last-child {
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+tr.categories {
+    font-size: large;
+    font-weight: bolder;
+}
+
+.contain {
+    display: flex;
+    background-color: rgb(50, 50, 50);
+}
+
+.left {
+    width: 30%;
+    float: left;
+    background-color: rgb(50, 50, 65);
+}
+
+.right {
+    width: 70%;
+    flex: auto;
+    background-color: rgb(50, 50, 65);
+}
+
+.imgcontainer {
+    height: auto;
+    background-color: rgb(50, 50, 55);
+}
+
+.titlecontainer {
+    height: auto;
+    background-color: rgb(70, 70, 85);
+}
+
+.info {
+    width: auto;
+    background-color: rgb(75, 75, 90);
+}
+
+.morelike {
+    flex: auto;
+}
