@@ -22,6 +22,20 @@ class DataSource:
         cursor.execute("SELECT * FROM test_table")
         records = cursor.fetchall()
         return records
+    
+    def get_data_from_title(self, type):
+        ''' Gets score of Anime title input by user '''
+        try:
+            cursor = self.connection.cursor()
+            query = "SELECT score FROM test_table WHERE name = %s;"
+            cursor.execute(query, (type,))
+            #print(cursor.fetchall())
+            return cursor.fetchall()[0]
+
+        except Exception as e:
+            print ("Something went wrong when executing the query in get_score_from_title: ", e)
+            print(type)
+            return None
         
     def get_score_from_title(self, type):
         ''' Gets score of Anime title input by user '''
