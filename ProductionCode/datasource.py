@@ -98,4 +98,21 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return None
         
+    def get_Random_Anime(self):
+        try: 
+            cursor = self.connection.cursor()
+            
+            try: 
+                query = f"SELECT * FROM anime_table ORDER BY RANDOM() LIMIT 1;"
+                cursor.execute(query)
+                return cursor.fetchall()
         
+            except Exception as e:
+                print ("Something went wrong when executing the query: ", e)
+                return None
+        
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return None
+        
+            
