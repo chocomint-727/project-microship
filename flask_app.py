@@ -8,6 +8,32 @@ dset = []
 app = Flask(__name__)
 sql = DataSource()
 
+def get_title_info(title):
+    ''' Helper function that gets title info from input title, returns score and genre '''
+    score = sql.get_score_from_title(title) 
+    genre = sql.get_genre_from_title(title)
+    return score, genre
+
+@app.route("/search")
+def search(): 
+    ''' Interacts with the filter by genres function. 
+        Because this function takes an arbitrary amount of arguments,
+        get request parameters are used rather than a route. '''
+    query = request.args.getlist("title")[0] # get all args from the get request
+    res=sql.fuzzy_match_name(query)
+    print(res)
+    return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
+
+@app.route("/title")
+def title(): 
+    args = request.args.getlist("title")
+    ''' Interacts with the filter by genres function. 
+        Employs a helper method to grab the thumbnail image on this page'''
+    res=sql.get_data_from_title(args[0])
+    print(res)
+    img = getImage(res[0], res[1])
+    return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+
 def getImage(id, title):
     '''
     Scrapes the MAL page to grab the image using ID and title
