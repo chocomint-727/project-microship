@@ -48,6 +48,17 @@ def home():
     '''Render the homepage. Not much else to say'''
     return render_template("homepage.html")
 
+
+
+@app.route("/random")
+def randomAnime():
+    res = sql.get_Random_Anime()[0]
+    print(res)
+    img = getImage(res[0], res[1])
+    return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+
+    
+
 @app.route("/genres")
 def filter(): 
     ''' Interacts with the filter by genres function. 
@@ -67,4 +78,4 @@ def python_bug(e):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5111)
+    app.run(host='0.0.0.0', port=5211)
