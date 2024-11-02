@@ -27,7 +27,7 @@ class DataSource:
         ''' Gets score of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT score FROM test_table WHERE name = %s;"
+            query = "SELECT * FROM test_table WHERE name = %s;"
             cursor.execute(query, (type,))
             #print(cursor.fetchall())
             return cursor.fetchall()[0]
