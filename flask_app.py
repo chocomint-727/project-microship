@@ -20,7 +20,7 @@ def getImage(id, title):
         return img
 
 def blurImageCheck(res):
-    if "Hentai" in res[3]:
+    if res != None and "Hentai" in res[3]:
         return True
     
 @app.route("/")
