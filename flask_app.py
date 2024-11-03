@@ -3,10 +3,8 @@ from ProductionCode.datasource import *
 from bs4 import BeautifulSoup
 import requests
 
-dset = []
 app = Flask(__name__)
 sql = DataSource()
-
 
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
@@ -21,6 +19,10 @@ def getImage(id, title):
         img = "https://i.ibb.co/fHnD0Qx/notfound.png"
         return img
 
+def blurImageCheck(res):
+    if "Hentai" in res[3]:
+        return True
+    
 @app.route("/")
 def home():
     ''' Renders the homepage. Not much else to say '''
@@ -45,19 +47,20 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
+    blur = blurImageCheck(res)
     if res == None:
         abort(404)
     else:
         img = getImage(res[0], res[1])
-        return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+        return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
 
 @app.route("/random")
 def randomAnime():
     ''' Renders page for a random anime by calling get_Random_Anime '''
     res = sql.get_random_anime()[0]
-    print(res)
     img = getImage(res[0], res[1])
-    return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+    blur = blurImageCheck(res)
+    return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
 
 @app.route("/genres")
 def filter(): 

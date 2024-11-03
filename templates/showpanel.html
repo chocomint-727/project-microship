@@ -7,7 +7,7 @@
     <body>
         <div class="contain">
             <div class="left">
-                <div class="imgcontainer">
+                <div class="imgcontainer {{ 'blur' if blur else '' }}">
                     <img src={{ imageLink }} alt={{ info[1] }}>
                 </div>
                 <div class="titlecontainter">

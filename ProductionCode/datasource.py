@@ -51,7 +51,6 @@ class DataSource:
             cursor = self.connection.cursor()
             query = "SELECT * FROM anime_table WHERE lower(name) = %s;"
             cursor.execute(query, (type.lower(),))
-            #print(cursor.fetchall())
             return cursor.fetchall()[0]
 
         except Exception as e:
