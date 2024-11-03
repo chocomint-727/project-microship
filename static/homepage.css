@@ -40,8 +40,6 @@ p.error-extra2 {
     font-size: 0.4em;
 }
 
-
-
 input {
     text-align: center;
     font-family: 'Mina';
@@ -59,6 +57,7 @@ header {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
 }
 
 nav {
@@ -66,6 +65,8 @@ nav {
     height: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 1%;
+
 }
 
 ul {

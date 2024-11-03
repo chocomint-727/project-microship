@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, abort
 from ProductionCode.datasource import *
 from bs4 import BeautifulSoup
 import requests
@@ -36,7 +36,7 @@ def search():
     query = request.args.getlist("title")[0] # get all args from the get request
     res=sql.fuzzy_match_name(query)
     print(res)
-    return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
+    return render_template("showlist.html", indices=res, query=query, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.route("/title")
 def title(): 
@@ -46,7 +46,7 @@ def title():
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
     if res == None:
-        return render_template("error404.html")    
+        abort(404)
     else:
         img = getImage(res[0], res[1])
         return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
@@ -68,7 +68,7 @@ def filter():
     query = request.args.getlist("genre") # get all args from the get request
     res=sql.filter_by_genres(query)
     if query == [''] or res == []:
-        return render_template("error404.html")
+        abort(404)
     else: 
         return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
 

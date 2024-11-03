@@ -1,14 +1,24 @@
 
 <html>
     <head>
-        <title>Media Sorter</title>
+        <title>Search Results | Next Episode</title>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='showlist.css') }}>
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
     <!""" + {{ids}}+ """>
     </head>
     <body>
-        <h1>Filtered TV Shows</h1>
-        <br>
+        <header>            
+            <nav>
+                <ul>
+                    <li><label for="home">HOME</label><a id="home" class="navbaritem" href="/">Home</a></li>
+                    <li><label for="advanced">Advanced Search</label><a id="advanced" class="navbaritem" href="/">Advanced Search</a></li>
+                    <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/">Rankings</a></li>
+                    <li><label for="random">Random</label><a id="random" class="navbaritem" href="/random">Random</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="resultstitle"><h1>Search Results for "{{ query }}"</h1></div>
+        <br> 
         <table cellspacing=0>
             <tbody>
                 {% for ix in indices %}
