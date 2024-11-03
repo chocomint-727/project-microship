@@ -7,6 +7,7 @@ dset = []
 app = Flask(__name__)
 sql = DataSource()
 
+
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
         If image is not found, returns a generic not found image
@@ -44,9 +45,11 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
-    print(res)
-    img = getImage(res[0], res[1])
-    return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
+    if res == None:
+        return render_template("error404.html")    
+    else:
+        img = getImage(res[0], res[1])
+        return render_template("showpanel.html", info=res, imageLink=img) # return the indices in the list
 
 @app.route("/random")
 def randomAnime():
@@ -64,7 +67,10 @@ def filter():
         '''
     query = request.args.getlist("genre") # get all args from the get request
     res=sql.filter_by_genres(query)
-    return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
+    if query == [''] or res == []:
+        return render_template("error404.html")
+    else: 
+        return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):

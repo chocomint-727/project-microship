@@ -34,6 +34,17 @@ class DataSource:
             print("Something went wrong when executing the query in get_all_titles: ", e)
             return None
 
+    def get_all_genres(self):    
+        ''' Retrieves and returns a list of all anime titles from the table '''
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute("SELECT genres FROM anime_table")
+            titles = [record[0] for record in cursor.fetchall()]
+            return titles
+        except Exception as e:
+            print("Something went wrong when executing the query in get_all_titles: ", e)
+            return None
+
     def get_data_from_title(self, type):
         ''' Gets data of Anime title input by user '''
         try:
