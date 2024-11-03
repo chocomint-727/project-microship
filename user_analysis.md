@@ -96,3 +96,8 @@ Users that are looking for a specific animation style but are not familiar with 
 
 ---
 
+# CIDER Analysis
+
+
+## This is our additional CIDER analysis for the Front-end deliverable. Two more assumptions are addressed here.
+

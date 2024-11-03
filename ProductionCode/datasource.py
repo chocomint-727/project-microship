@@ -3,12 +3,12 @@ import ProductionCode.psqlConfig as config
 
 class DataSource:
     def __init__(self):
-        '''Constructor that initiates connection to database '''
+        ''' Constructor that initiates connection to database '''
         self.connection = self.connect()
 
     def connect(self):
-        '''Initiates connection to database using information in the psqlConfig.py file.
-        Returns the connection object.'''
+        ''' Initiates connection to database using information in the psqlConfig.py file.
+        Returns the connection object '''
         try:
             connection = psycopg2.connect(database=config.database, user=config.user, password=config.password, host="localhost")
         except Exception as e:
@@ -49,14 +49,14 @@ class DataSource:
             return None
 
     def fuzzy_match_name(self, title):
+        ''' Allows site to search beyond exact matches '''
         cursor = self.connection.cursor()
         query = "SELECT * FROM anime_table WHERE levenshtein(name, %s) <= 2 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
         cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))
-        #print(cursor.fetchall())
         return cursor.fetchall()
         
     def filter_by_genres(self, g):
-        '''This filters the table by a specific genre or multiple genres and displays them.'''
+        ''' Filters the table by a specific genre or multiple genres and displays them '''
         try:
             cursor = self.connection.cursor()
             

@@ -8,11 +8,17 @@ app = Flask(__name__)
 sql = DataSource()
 
 def getImage(id, title):
-    ''' Scrapes the MAL page to grab the image using ID and title '''
-    r = requests.get(f"https://myanimelist.net/anime/{id}")
-    soup = BeautifulSoup(r.content, features="html.parser")
-    img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
-    return img
+    ''' Scrapes the MAL page to grab the image using ID and title.
+        If image is not found, returns a generic not found image
+        '''
+    try:
+        r = requests.get(f"https://myanimelist.net/anime/{id}")
+        soup = BeautifulSoup(r.content, features="html.parser")
+        img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
+        return img
+    except:
+        img = "https://i.ibb.co/fHnD0Qx/notfound.png"
+        return img
 
 @app.route("/")
 def home():
@@ -33,10 +39,10 @@ def search():
 
 @app.route("/title")
 def title(): 
-    args = request.args.getlist("title")
     ''' Interacts with the filter by genres function. 
         Employs a helper method to grab the thumbnail image on this page
         '''
+    args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
     print(res)
     img = getImage(res[0], res[1])
