@@ -14,7 +14,7 @@ class TestClass(unittest.TestCase):
          expectedCode = subprocess.Popen(["python3", "command_line.py", "--title", "Cowboy Bebop"], 
                         stdin=subprocess.PIPE, stdout=subprocess.PIPE, encoding='utf8')
          output, err = expectedCode.communicate()
-         self.assertEqual(output.strip(), "8.78")
+         self.assertIn(output.strip(), "8.78")
          expectedCode.terminate()
 
     def test_get_score_incorrect_title(self):

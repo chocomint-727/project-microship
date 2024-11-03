@@ -35,7 +35,7 @@ class DataSource:
             return None
 
     def get_data_from_title(self, type):
-        ''' Gets score of Anime title input by user '''
+        ''' Gets data of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
             query = "SELECT * FROM anime_table WHERE lower(name) = %s;"
