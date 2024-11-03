@@ -7,7 +7,7 @@ sql = DataSource()
 
 """This file parses the command line arguments and provides instructions for what to do next."""
 parser = argparse.ArgumentParser(
-                    prog='Anime Browser',
+                    prog='Next Episode',
                     description='Find the Anime of your dreams!',
                     epilog='With the Anime Browser tool, you can find all sorts of useful information on your current (or next!) favorite Anime. Get binging!')
 
@@ -19,8 +19,10 @@ parser.add_argument("--title", type=str)
 args = parser.parse_args()
 
 if args.genres is not None:
-    print([i[0] for i in sql.filter_by_genres(args.genres)]) # command line functionality is the same, meaning that it only returns the MAL_IDs from the db query
+    listofmals = []
+    for anime in sql.filter_by_genres(args.genres):
+        listofmals.append(anime[0])
+    print(listofmals)
+    # command line functionality is the same, meaning that it only returns the MAL_IDs from the db query
 elif args.title is not None:
-    print(sql.get_score_from_title(args.title))
-
-print(sql.get_score_from_title("Trigun"))
+    print(sql.get_data_from_title(args.title)[2])
