@@ -80,10 +80,12 @@ def filter():
 
 @app.errorhandler(404)
 def page_not_found(e):
+    ''' A helpful 404 error page is rendered when a 404 error is encountered.'''
     return render_template("error404.html")
 
 @app.errorhandler(500)
 def python_bug(e):
+    ''' When a 500 error is encountered, a helpful 500 error page is rendered.'''
     return render_template("error500.html")
 
 if __name__ == "__main__":
