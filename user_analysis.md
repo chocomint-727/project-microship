@@ -101,3 +101,22 @@ Users that are looking for a specific animation style but are not familiar with 
 
 ## This is our additional CIDER analysis for the Front-end deliverable. Two more assumptions are addressed here.
 
+### Critique
+Our website currently assumes that users know that our website is an interface to look through a database to search for anime shows and movies, as we don’t have an about section right now.
+
+
+### Imagine
+Users who are not already aware of the website may not be able to immediately identify its purpose nor use the different features in the navigation bar that also rely on the user knowing how they pertain to the website itself – the rankings tab, for example, displays a ranked list of anime based on their popularity(once we implement it). These users would be discouraged from using our website and excluded since they do not actually know what our website is.
+
+
+### Design
+We can add an “about” section to the website, so that users who are unfamiliar with it can identify what features it offers. This will allow users to properly understand the different parts of the website.
+
+
+### Expand
+Our website currently assumes that users know where they can watch anime.
+
+
+### Repeat
+A user may filter by a few genres and then pick an anime with a score of 8.75 or higher that they want to watch. In order for them to actually be able to watch the anime, they must have knowledge of a streaming service or T.V. channel where they can watch it, since we do not provide this information. This may exclude users that are new to watching anime and may not be familiar with streaming services that have anime to watch. These users would be excluded from obtaining the maximum amount of utility from our website. To help include these users, we could add a page reachable via a “Where to Watch Anime” tab in the navigation bar that displays a list of places where anime can be viewed.
+
