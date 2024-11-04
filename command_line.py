@@ -21,8 +21,8 @@ args = parser.parse_args()
 if args.genres is not None:
     listofmals = []
     for anime in sql.filter_by_genres(args.genres):
-        listofmals.append(anime[0])
+        listofmals.append(anime[3])
     print(listofmals)
     # command line functionality is the same, meaning that it only returns the MAL_IDs from the db query
 elif args.title is not None:
-    print(sql.get_data_from_title(args.title)[2])
+    print(sql.get_data_from_title(args.title)[5])

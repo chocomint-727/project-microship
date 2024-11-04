@@ -47,7 +47,6 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
-    print(res)
     blur = blurImageCheck(res)
     if res == None:
         abort(404)
