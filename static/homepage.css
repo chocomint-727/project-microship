@@ -1,11 +1,15 @@
 html {
     font-family: 'Mina';
     color: blanchedalmond;
-    /* background:linear-gradient(rgba(255, 162, 162, 0.55), rgba(255, 170, 170, 0.55)), url(https://i.ibb.co/rs0xHyh/cherry-blossom-tree-blurred.gif); */
+    background:linear-gradient(rgba(255, 162, 162, 0.55), rgba(255, 170, 170, 0.55)), url(https://i.ibb.co/rs0xHyh/cherry-blossom-tree-blurred.gif);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    /*
     background-size: auto 140%;
     background-repeat: no-repeat;
     background-color: rgb(20, 20, 20);
     background-image: url(https://img.freepik.com/premium-photo/purple-background-graphic-modern-texture-blur-abstract-digital-design-backgrounds_97567-1072.jpg?semt=ais_hybrid);
+    */
 }
 
 label {
@@ -183,4 +187,3 @@ form {
     overflow-x: hidden;
     width: 200px; 
 }
-
