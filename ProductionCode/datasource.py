@@ -10,7 +10,7 @@ class DataSource:
         ''' Initiates connection to database using information in the psqlConfig.py file.
         Returns the connection object '''
         try:
-            connection = psycopg2.connect(database=config.database, user=config.user, password=config.password, host="localhost")
+            connection = psycopg2.connect()#database=config.database, user=config.user, password=config.password, host="localhost")
         except Exception as e:
             print("Connection error: ", e)
             exit()
@@ -19,7 +19,7 @@ class DataSource:
     def get_all_anime(self):
         ''' Outputs the entire dataset - currently only includes two columns: title and score '''
         cursor = self.connection.cursor()
-        cursor.execute("SELECT * FROM anime_table")
+        cursor.execute("SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey)")
         records = cursor.fetchall()
         return records
     
@@ -34,35 +34,24 @@ class DataSource:
             print("Something went wrong when executing the query in get_all_titles: ", e)
             return None
 
-    def get_all_genres(self):    
-        ''' Retrieves and returns a list of all anime titles from the table '''
-        try:
-            cursor = self.connection.cursor()
-            cursor.execute("SELECT genres FROM anime_table")
-            titles = [record[0] for record in cursor.fetchall()]
-            return titles
-        except Exception as e:
-            print("Something went wrong when executing the query in get_all_titles: ", e)
-            return None
-
     def get_data_from_title(self, type):
         ''' Gets data of Anime title input by user '''
         try:
             cursor = self.connection.cursor()
-            query = "SELECT * FROM anime_table WHERE lower(name) = %s;"
+            query = "SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) WHERE lower(name) = %s;"
             cursor.execute(query, (type.lower(),))
             return cursor.fetchall()[0]
 
         except Exception as e:
-            print ("Something went wrong when executing the query in get_score_from_title: ", e)
+            print ("Something went wrong when executing the query in get_data_from_title: ", e)
             print(type)
             return None
 
     def fuzzy_match_name(self, title):
         ''' Allows site to search beyond exact matches '''
         cursor = self.connection.cursor()
-        query = "SELECT * FROM anime_table WHERE levenshtein(name, %s) <= 2 or lower(name) LIKE %s order by levenshtein(name, %s) asc;"
-        cursor.execute(query, (title.lower(),'%%'+title.lower()+'%%',title.lower(),))
+        query = "SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) WHERE lower(name) LIKE %s order by levenshtein(name, %s) asc;"
+        cursor.execute(query, ('%%'+title.lower()+'%%',title.lower(),))
         return cursor.fetchall()
         
     def filter_by_genres(self, g):
@@ -71,12 +60,12 @@ class DataSource:
             cursor = self.connection.cursor()
             
             try:
-                query = f"select * from anime_table where lower(genres) like '%{str(g[0]).lower()}%'"
+                query = f"select * from (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) where lower(genres) like '%{str(g[0]).lower()}%'"
                 for gen in g[1:]:
                     query += f"and lower(genres) like '%{str(gen).lower()}%'"
                 query += ";"
             except IndexError:
-                query = "select * from anime_table;"
+                query = "select * from (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey);"
             
             cursor.execute(query)
             return cursor.fetchall()
@@ -91,7 +80,7 @@ class DataSource:
             cursor = self.connection.cursor()
             
             try: 
-                query = f"SELECT * FROM anime_table ORDER BY RANDOM() LIMIT 1;"
+                query = f"SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) ORDER BY RANDOM() LIMIT 1;"
                 cursor.execute(query)
                 return cursor.fetchall()
         

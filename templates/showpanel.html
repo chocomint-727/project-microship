@@ -5,13 +5,24 @@
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
     </head>
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><label for="home">HOME</label><a id="home" class="navbaritem" href="/">Home</a></li>
+                    <li><label for="advanced">Advanced Search</label><a id="advanced" class="navbaritem" href="/">Advanced
+                            Search</a></li>
+                    <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/">Rankings</a></li>
+                    <li><label for="random">Random</label><a id="random" class="navbaritem" href="/random">Random</a></li>
+                </ul>
+            </nav>
+        </header>
         <div class="contain">
             <div class="left">
                 <div class="imgcontainer {{ 'blur' if blur else '' }}">
-                    <img src={{ imageLink }} alt={{ info[1] }}>
+                    <img src={{ imageLink }} alt={{ info[4] }}>
                 </div>
                 <div class="titlecontainter">
-                    <h1>{{ info[1] }}</h1>
+                    <h1>{{ info[4] }}</h1>
                 </div>
             </div>
             <div class="right">
@@ -25,9 +36,9 @@
                             <td class="categories">Popularity</td>
                         </tr>
                         <tr>
-                            <td class="data">{{info[0]}}</td>
-                            <td class="data">{{info[2]}}</td>
                             <td class="data">{{info[3]}}</td>
+                            <td class="data">{{info[5]}}</td>
+                            <td class="data">{{info[6]}}</td>
                             <td class="data">{{info[12]}}</td>
                         </tr>
                     </table>
@@ -39,10 +50,10 @@
                             <td class="categories">Type</td>
                         </tr>
                         <tr>
-                            <td class="data">{{info[5]}}</td>
-                            <td class="data">{{info[10]}}</td>
+                            <td class="data">{{info[7]}}</td>
                             <td class="data">{{info[11]}}</td>
-                            <td class="data">{{info[4]}}</td>
+                            <td class="data">{{info[13]}}</td>
+                            <td class="data">{{info[14]}}</td>
                         </tr>
                     </table>
                     <table cellspacing=0>
@@ -53,10 +64,10 @@
                             <td class="categories">Air Dates</td>
                         </tr>
                         <tr>
-                            <td class="data">{{info[8]}}</td>
-                            <td class="data">{{info[7]}}</td>
                             <td class="data">{{info[9]}}</td>
-                            <td class="data">{{info[6]}}</td>
+                            <td class="data">{{info[10]}}</td>
+                            <td class="data">{{info[15]}}</td>
+                            <td class="data">{{info[8]}}</td>
                         </tr>
                     </table>
                 </div>

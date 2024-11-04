@@ -20,7 +20,7 @@ def getImage(id, title):
         return img
 
 def blurImageCheck(res):
-    if res != None and "Hentai" in res[3]:
+    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6]):
         return True
     
 @app.route("/")
@@ -47,18 +47,19 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
+    print(res)
     blur = blurImageCheck(res)
     if res == None:
         abort(404)
     else:
-        img = getImage(res[0], res[1])
+        img = getImage(res[3], res[4])
         return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
 
 @app.route("/random")
 def randomAnime():
     ''' Renders page for a random anime by calling get_Random_Anime '''
     res = sql.get_random_anime()[0]
-    img = getImage(res[0], res[1])
+    img = getImage(res[3], res[4])
     blur = blurImageCheck(res)
     return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
 
@@ -73,7 +74,7 @@ def filter():
     if query == [''] or res == []:
         abort(404)
     else: 
-        return render_template("showlist.html", indices=res, ids = [f[0] for f in res]) # return the indices in the list
+        return render_template("showlist.html", indices=res, ids = [f[3] for f in res]) # return the indices in the list
 
 @app.errorhandler(404)
 def page_not_found(e):

@@ -22,8 +22,8 @@
         <table cellspacing=0>
             <tbody>
                 {% for ix in indices %}
-                    <tr onclick='window.location = "/title?title={{ix[1]}}"'> 
-                        {% for data in ix %}
+                    <tr onclick='window.location = "/title?title={{ix[4]}}"'> 
+                        {% for data in ix[3:] %}
                             <td>{{ data }}</td>
                         </a>
                         {% endfor %}  
