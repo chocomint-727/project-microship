@@ -22,7 +22,7 @@ def getImage(id, title):
 def blurImageCheck(res):
     ''' Checks if artwork should be blurred based on genre of anime 
         (some inappropriate genres) '''
-    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6]):
+    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6] or "Harem" in res[6]):
         return True
     
 @app.route("/")
