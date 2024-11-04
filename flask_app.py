@@ -20,6 +20,8 @@ def getImage(id, title):
         return img
 
 def blurImageCheck(res):
+    ''' Checks if artwork should be blurred based on genre of anime 
+        (some inappropriate genres) '''
     if res != None and ("Hentai" in res[6] or "Ecchi" in res[6]):
         return True
     
@@ -57,7 +59,7 @@ def title():
 
 @app.route("/random")
 def randomAnime():
-    ''' Renders page for a random anime by calling get_Random_Anime '''
+    ''' Renders page for a random anime by calling get_random_anime '''
     res = sql.get_random_anime()[0]
     img = getImage(res[3], res[4])
     blur = blurImageCheck(res)
