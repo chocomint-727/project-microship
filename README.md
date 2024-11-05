@@ -7,6 +7,12 @@ NAMES:
 - Omar Sobhy
 - Matthew Hall
 
+# Comments for the Front-End Deliverable
+Currently, the "Home," "Advanced Search," and "Rankings" buttons in the navigation bar do nothing. We will most likely implement these for the final version of the project and may add more buttons to the navigation bar. The two features that allow a user to get information from the database on our website are the non-case-sensitive autocomplete search bar on the homepage and the "Random" button in the navigation bar on the homepage. 
+To use the search bar, you can type in the title of an anime in the database or start to type a title, and then select the full title from the dropdown of autocomplete options that appear, or you can type anything at all. Then, you press the purple button to the right of the search bar to display anime that contain the characters that you typed in. From here you can hover over the row for a particular anime and click on it to display a graphic that contains a promotional image of the anime and information such as the animation studio that produced it, its genres, and score.
+To use the "Random" button in the navigation bar, click on it. This will display the same type of graphic from the search functionality, but for a random anime from our database. 
+Additionally, anime of particular genres that we have reason to believe will produce NSFW promotional images via webscraping have their pictures blurred out in the graphic display of their information.
+
 
 # Comments for the Database Deliverable
 We kept all of the columns in the dataset because all of the information in these columns is displayed when users filter by genres in order to give them the most information possible about those anime. We also may make functions to filter by at least some of these other columns in the future.
