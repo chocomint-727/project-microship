@@ -201,6 +201,7 @@ tr.categories {
 }
 
 /*
+We may choose to add this for the final version.
 .blur img:hover {
     transition-duration: 1s;
     filter: none;
