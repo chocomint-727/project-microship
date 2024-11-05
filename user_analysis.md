@@ -99,17 +99,30 @@ Users that are looking for a specific animation style but are not familiar with 
 
 ---
 
+
+# Potential Users for the functioning version of our website with a GUI (the Front End Deliverable):
+- This is the same as the previous deliverables, except that our website now works for people with a variety of disabilities, as discussed in the last bullet point.
+- Anime Newcomers: Those who are new to anime and want to get their feet wet in the world of anime by searching for animes with good ratings and by looking for genres that match their interests.
+- Anime Enthusiasts: The seasoned Anime enjoyers - anime enthusiasts have watched a number of anime and know their way around anime lingo, enabling them to easily search for the next anime that they want to watch.
+- Anime Researchers: Those who are researching anime and want a robust way to get information quickly.
+- Additionally, our website has the ability to be used by people who use screen readers to navigate the web (thanks to our labels), people who are colorblind (thanks to our color scheme), people who have low vision (since our pages can be resized).
+
+# Potential Benefits
+- Users can find some basic information about a particular anime by typing its title in the search bar on the main page, such as the animation studio that produced it, its genres, or when it aired.
+- If a user wishes to find an anime completely new to them, they can click on the "Random" button on the navigation bar, which will display information about a random anime from our database.
+- Researchers can find basic information about virtually any particular anime that aired in 2020 or prior, and quickly if they know the title.
+
 # CIDER Analysis
 
 
-## This is our additional CIDER analysis for the Front-end deliverable. Two more assumptions are addressed here.
+## This is our additional CIDER analysis for the Front-End deliverable. Two more assumptions are addressed here.
 
 ### Critique
-Our website currently assumes that users know that our website is an interface to look through a database to search for anime shows and movies, as we don’t have an about section right now.
+Our website currently assumes that users know that our website is an interface to look through a database to search for anime shows and movies, as we don’t have a section that explains this right now.
 
 
 ### Imagine
-Users who are not already aware of the website may not be able to immediately identify its purpose nor use the different features in the navigation bar that also rely on the user knowing how they pertain to the website itself – the rankings tab, for example, displays a ranked list of anime based on their popularity(once we implement it). These users would be discouraged from using our website and excluded since they do not actually know what our website is.
+Users who are not already aware of the website may not be able to immediately identify its purpose nor use the different features in the navigation bar that also rely on the user knowing how they pertain to the website itself. These users would be discouraged from using our website and excluded since they do not actually know what our website is.
 
 
 ### Design
@@ -121,5 +134,5 @@ Our website currently assumes that users know where they can watch anime.
 
 
 ### Repeat
-A user may filter by a few genres and then pick an anime with a score of 8.75 or higher that they want to watch. In order for them to actually be able to watch the anime, they must have knowledge of a streaming service or T.V. channel where they can watch it, since we do not provide this information. This may exclude users that are new to watching anime and may not be familiar with streaming services that have anime to watch. These users would be excluded from obtaining the maximum amount of utility from our website. To help include these users, we could add a page reachable via a “Where to Watch Anime” tab in the navigation bar that displays a list of places where anime can be viewed.
+A user may use the random button to find a random anime. However, in order for them to actually be able to watch the anime, they must have knowledge of a streaming service or T.V. channel where they can watch it, since we do not provide this information. This may exclude users that are new to watching anime and may not be familiar with streaming services that have anime to watch. These users would be excluded from obtaining the maximum amount of utility from our website. To help include these users, we could add a page reachable via a “Where to Watch Anime” tab in the navigation bar that displays a list of places where anime can be viewed.
 
