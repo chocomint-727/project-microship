@@ -1,4 +1,16 @@
-body {
+/*body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}*/
+
+.global {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -111,4 +123,93 @@ form {
     overflow-y: scroll;
     overflow-x: hidden;
     width: 200px; 
+}
+
+.menubutton {
+    transition-duration: 150ms;
+    text-align: center;
+    height: 10vh;
+    width: 50%;
+    background-color: #54466b;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9c94d8;
+    border-radius: 3vh;
+    color: inherit;
+    font-family: inherit;
+    font-size: x-large;
+    margin: 1%;
+    padding: 3px;
+}
+
+.menubutton:hover {
+    transition-duration: 150ms;
+    background-color: #c4b6eb;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5c5498;
+    border-radius: 3vh;
+    color: #333;
+}
+
+.overlay {
+    z-index: 100;
+    width: 90%;
+    height: 90%;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+}
+
+.overlayHeader {
+    height: 30%;
+    display: block;
+}
+
+.overlayHeader h1 {
+    float: left;
+    margin: 10%;
+}
+
+.overlayHeader button{
+    float: right;
+}
+
+.buttonContainer {
+    height: 70%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+
+.option {
+    transition-duration: 150ms;
+    text-align: center;
+    height: 10vh;
+    width: 25%;
+    background-color: #54466b;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #9c94d8;
+    border-radius: 3vh;
+    color: inherit;
+    font-family: inherit;
+    font-size: x-large;
+    margin: 1%;
+    padding: 3px;
+}
+
+.option.active {
+    transition-duration: 150ms;
+    background-color: #c4b6eb;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5c5498;
+    border-radius: 3vh;
+    color: #333;
 }

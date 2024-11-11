@@ -6,6 +6,7 @@
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src={{ url_for('static', filename='scripts/homepage.js') }} defer></script>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">        
     </head>
     <body>
@@ -19,35 +20,59 @@
                 </ul>
             </nav>
         </header>
-        <div class="contain">
-            <div class="title">
-                <p class="title">Next Episode</p>
-                <p class="c title">|</p>
-            </div>
-            <div class="search">
-                <form action="/search">
-                    <label for="searchbar">Search Bar</label><input id="searchbar" type="text" name="title" class="bar" placeholder="Search" />
-                    <script>
-                        $(document).ready(function() {
-                            var availableTags = [
-                                {% for anime in animes %}
-                                    "{{ anime }}",
+
+        
+
+        <div class="global">
+            <div class="contain">
+                <div class="title">
+                    <p class="title">Next Episode</p>
+                    <p class="c title">|</p>
+                </div>
+                <div class="search">
+                    <form action="/search" id="searchForm">
+                        <label for="searchbar">Search Bar</label><input id="searchbar" type="text" name="title" class="bar"
+                            placeholder="Search" />
+                        <script>
+                            $(document).ready(function ()
+                            {
+                                var availableTags = [
+                                    {% for anime in animes %}
+                                                "{{ anime }}",
                                 {% endfor %}
-                            ];
+                                        ];
                             $("#searchbar").autocomplete({
                                 source: availableTags,
                                 minLength: 3,
                             });
-                        });                                            
-                    </script>                
-                    <label for="submitbutton">Submit</label><button id="submitbutton" type="submit" class="submit" value="">
-                    <a target = "blank" href = "C:/Users/mhall/Downloads/Anonymous_Magnify_1_icon.svg">
-                        <img src="C:/Users/mhall/Downloads/Anonymous_Magnify_1_icon.svg" alt="Magnifying Glass" width="50" height="50">
-                    </a></button>
-                </form>
+                                    });                                            
+                        </script>
+                        <label for="submitbutton">Submit</label><button id="submitbutton" type="submit" class="submit" value="">
+                            <a target="blank" href="C:/Users/mhall/Downloads/Anonymous_Magnify_1_icon.svg">
+                                <!-- img src="C:/Users/mhall/Downloads/Anonymous_Magnify_1_icon.svg" alt="Magnifying Glass" width="50" height="50">-->
+                            </a></button>
+                        <br>
+                        
+                    </form>
+                </div>
+                <div style="width:100%">
+                    <button class="menubutton" type="button" id="tags" value="Tags" onclick="toggleDiv('filter')">TAGS</button>
+                    <button class="menubutton" type="button" id="blacklist" value="Blacklist">Blacklist</button>
+                </div>
+                <br>
             </div>
-            <br><br><br>
-            <br>
+            <div class="overlay" id="filter" style="display: none;">
+                <div class="overlayHeader">
+                    <h1>Filter by Genres</h1>
+                    <button onclick="toggleDiv('filter')"></button>
+                </div>
+                <div class="buttonContainer">
+                    <button class="option" data-enabled="false" data-name="Action">Action</button>
+                    <button class="option" data-enabled="false" data-name="Comedy">Action</button>
+                    <button class="option" data-enabled="false" data-name="Drama">Action</button>
+                    <button class="option" data-enabled="false" data-name="Hentai">Action</button>
+                </div>
+            </div>
         </div>
     </body> 
 </html>
