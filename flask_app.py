@@ -5,6 +5,7 @@ import requests
 
 app = Flask(__name__)
 sql = DataSource()
+allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Ecchi', 'Fantasy', 'Game', 'Harem', 'Hentai', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yaoi', 'Yuri']
 
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
@@ -29,7 +30,7 @@ def blurImageCheck(res):
 def home():
     ''' Renders the homepage. Not much else to say '''
     animes = sql.get_all_titles()
-    return render_template("homepage.html", animes=animes)
+    return render_template("homepage.html", animes=animes, genres=allgenres)
 
 @app.route("/search")
 def search(): 
@@ -38,8 +39,9 @@ def search():
         get request parameters are used rather than a route 
         '''
     query = request.args.getlist("title")[0] # get all args from the get request
-    res=sql.fuzzy_match_name(query)
-    print(res)
+    genres = request.args.getlist("genre")
+    blacklist = request.args.getlist("exclude")
+    res=sql.fuzzy_match_name(query, genres, blacklist)
     return render_template("showlist.html", indices=res, query=query, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.route("/title")

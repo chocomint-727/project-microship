@@ -47,11 +47,22 @@ class DataSource:
             print(type)
             return None
 
-    def fuzzy_match_name(self, title):
+    def fuzzy_match_name(self, title, genres, blacklist):
         ''' Allows site to search beyond exact matches '''
         cursor = self.connection.cursor()
-        query = "SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) WHERE lower(name) LIKE %s order by levenshtein(name, %s) asc;"
-        cursor.execute(query, ('%%'+title.lower()+'%%',title.lower(),))
+        query = "SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey) WHERE lower(name) LIKE %s " 
+        
+        if len(genres) > 0:
+            for gen in genres:
+                query += f"and lower(genres) like '%%{str(gen).lower()}%%' "
+                
+        if len(blacklist) > 0:
+            for gen in genres:
+                query += f"and not (lower(genres) like '%%{str(gen).lower()}%%') "
+        
+        query += "order by levenshtein(name, %s) asc;"
+        print(query)
+        cursor.execute(query, ('%%'+title.lower()+'%%', title.lower(),))
         return cursor.fetchall()
         
     def filter_by_genres(self, g):

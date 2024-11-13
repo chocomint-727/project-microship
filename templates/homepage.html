@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Next Episode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='homepage.css') }}>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='global.css' ) }}>
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
@@ -57,20 +58,41 @@
                 </div>
                 <div style="width:100%">
                     <button class="menubutton" type="button" id="tags" value="Tags" onclick="toggleDiv('filter')">TAGS</button>
-                    <button class="menubutton" type="button" id="blacklist" value="Blacklist">Blacklist</button>
+                    <button class="menubutton" type="button" id="blacklist" value="Blacklist" onclick="toggleDiv('exclude')">Blacklist</button>
                 </div>
                 <br>
             </div>
+
             <div class="overlay" id="filter" style="display: none;">
                 <div class="overlayHeader">
-                    <h1>Filter by Genres</h1>
-                    <button onclick="toggleDiv('filter')"></button>
+                    <div class="overlaytitle">
+                        <h1>Filter by Genres</h1>
+                    </div>
+                    <div class="overlaybutton">
+                        <button onclick="toggleDiv('filter')"><img src="https://googledrive.com/host/17q8qxejRKexitva7wBvQLLaow7NTcDbM"></button>
+                    </div>
                 </div>
                 <div class="buttonContainer">
-                    <button class="option" data-enabled="false" data-name="Action">Action</button>
-                    <button class="option" data-enabled="false" data-name="Comedy">Action</button>
-                    <button class="option" data-enabled="false" data-name="Drama">Action</button>
-                    <button class="option" data-enabled="false" data-name="Hentai">Action</button>
+                    {% for g in genres%}
+                    <button class="option" data-type="genre" data-enabled="false" data-name="{{g}}">{{g}}</button>
+                    {%endfor%}
+                </div>
+            </div>
+
+            <div class="overlay" id="exclude" style="display: none;">
+                <div class="overlayHeader">
+                    <div class="overlaytitle">
+                        <h1>Exclude Genres From Search</h1>
+                    </div>
+                    <div class="overlaybutton">
+                        <button onclick="toggleDiv('exclude')"><img
+                                src="https://googledrive.com/host/17q8qxejRKexitva7wBvQLLaow7NTcDbM"></button>
+                    </div>
+                </div>
+                <div class="buttonContainer">
+                    {% for g in genres%}
+                    <button class="option" data-type="exclude" data-enabled="false" data-name="{{g}}">{{g}}</button>
+                    {%endfor%}
                 </div>
             </div>
         </div>
