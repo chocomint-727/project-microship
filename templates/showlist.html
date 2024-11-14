@@ -18,7 +18,17 @@
                 </ul>
             </nav>
         </header>
-        <div class="resultstitle"><h1>Search Results for "{{ query }}"</h1></div>
+        <div class="resultstitle">
+            <h1>Search Results for 
+                {% if query and query != '' and genres %}
+                    "{{ query }}" with genres: "{{ genres | join(', ') }}"
+                {% elif query and query != '' %}
+                    "{{ query }}"
+                {% elif genres %}
+                    genres: "{{ genres | join(', ') }}"
+                {% endif %}
+            </h1>
+        </div>
         <br> 
         <div style="max-height: 73vh; overflow-y: scroll; border-radius: 3vh; margin:auto">
             <table cellspacing=0>
