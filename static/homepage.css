@@ -202,8 +202,12 @@ form {
     border: 1px solid snow;
     border-radius: 2vh;
     background-color: #222;
-}
 
+}
+.xbutton {
+    height: 30%;
+    cursor: pointer; 
+}
 .option {
     transition-duration: 150ms;
     text-align: center;
@@ -219,6 +223,7 @@ form {
     font-size: x-large;
     margin: 1%;
     padding: 3px;
+    cursor: pointer; 
 }
 
 .option.active {
