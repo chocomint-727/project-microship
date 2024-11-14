@@ -7,7 +7,7 @@
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
     <!""" + {{ids}}+ """>
     </head>
-    <body>
+    <body style="max-height: 100%;">
         <header>            
             <nav>
                 <ul>
@@ -20,7 +20,7 @@
         </header>
         <div class="resultstitle"><h1>Search Results for "{{ query }}"</h1></div>
         <br> 
-        <div style="height: auto; overflow-y: scroll;">
+        <div style="max-height: 73vh; overflow-y: scroll; border-radius: 3vh; margin:auto">
             <table cellspacing=0>
                 <tbody>
                     {% for ix in indices %}
