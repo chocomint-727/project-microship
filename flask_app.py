@@ -42,7 +42,7 @@ def search():
     genres = request.args.getlist("genre")
     blacklist = request.args.getlist("exclude")
     res=sql.fuzzy_match_name(query, genres, blacklist)
-    return render_template("showlist.html", indices=res, query=query, ids = [f[0] for f in res]) # return the indices in the list
+    return render_template("showlist.html", indices=res, query=query, genres=genres, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.route("/title")
 def title(): 
