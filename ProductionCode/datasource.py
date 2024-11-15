@@ -57,8 +57,8 @@ class DataSource:
                 query += f"and lower(genres) like '%%{str(gen).lower()}%%' "
                 
         if len(blacklist) > 0:
-            for gen in genres:
-                query += f"and not (lower(genres) like '%%{str(gen).lower()}%%') "
+            for b in blacklist:
+                query += f"and not (lower(genres) like '%%{str(b).lower()}%%') "
         
         query += "order by levenshtein(name, %s) asc;"
         print(query)
