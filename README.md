@@ -16,7 +16,7 @@ The URL format for our functionality is as follows:
 
 -To filter the data by a genre, run the flask app and add /genres?genre=(genre to search by) to the website URL. This is not case sensitive. When on the page of anime from that genre, click on one of the rows to go to a page that displays the information about that anime in a more organized way.
 
--To filter the data by multiple genres, run the flask app and add /genres?genre=(genre to search by)&genre=(genre to search by) to the website URL adding as many ampersands as needed to search for as filter by as many genres as you want.
+-To filter the data by multiple genres, run the flask app and add /genres?genre=(genre to search by)&genre=(genre to search by) to the website URL adding as many ampersands as needed to filter by as many genres as you want.
 
 -To get information about a random anime, run the flask app and add /random to the website URL. This is case sensitive and "random" must be all lowercase.
 
