@@ -91,6 +91,13 @@ class TestHomepage(unittest.TestCase):
         self.app = app.test_client()
         response = self.app.get("/genres?genre=schools").data
         self.assertIn(b"Page not found", response)
+        
+    def test_valid_and_invalid_genre(self):
+        ''' Tests the filter_by_genre function with a valid genre and an invalid genre, which should
+        return a 404 error.'''
+        self.app = app.test_client()
+        response = self.app.get("/genres?genres=Seinen&genre=nonsense").data
+        self.assertIn(b"Page not found", response)    
 
 if __name__ == "__main__":  
     unittest.main()
