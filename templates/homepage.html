@@ -70,6 +70,7 @@
                     </div>
                     <div class="overlaybutton">
                         <button onclick="toggleDiv('filter')"><img src="https://img.icons8.com/ios7/600/cancel.png" class="xbutton"></button>
+                        <button onclick="clearAll('filter')"><img src="https://img.icons8.com/ios7/600/cancel.png" class="xbutton"></button>
                     </div>
                 </div>
                 <div class="buttonContainer">
@@ -89,7 +90,9 @@
                     <div class="overlaybutton">
                         <button onclick="toggleDiv('exclude')"><img
                                 src="https://googledrive.com/host/17q8qxejRKexitva7wBvQLLaow7NTcDbM"></button>
+                        <button onclick="clearAll('exclude')"><img src="https://img.icons8.com/ios7/600/cancel.png" class="xbutton"></button>
                     </div>
+                    
                 </div>
                 <div class="buttonContainer">
                     {% for g in genres%}

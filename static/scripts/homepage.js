@@ -5,6 +5,30 @@ function toggleDiv(id)
     div.style.display = div.style.display == "none" ? "block" : "none";
 }
 
+function clearAll(id)
+{
+    document.getElementById(id).querySelectorAll('.option').forEach(button =>
+    {
+        button.setAttribute('data-enabled', false);
+        button.classList.remove('active');
+
+        let existingInput;
+
+        const tag = button.getAttribute("data-name");
+        const type = button.getAttribute('data-type');
+
+        try
+        {
+            existingInput = document.querySelector(`input[value=${tag}][name=${type}]`);
+            existingInput.remove();
+        } catch (error)
+        {
+            console.log("Hidden Input Tag Missing");
+        }
+
+    });
+}
+
 document.querySelectorAll('.option').forEach(button =>
 {
     console.log(button.attributes)
