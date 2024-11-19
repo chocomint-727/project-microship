@@ -79,6 +79,12 @@ def filter():
     else: 
         return render_template("showlist.html", indices=res, ids = [f[3] for f in res]) # return the indices in the list
 
+@app.route("/about")
+def about():
+    ''' Renders about page '''
+
+    return render_template("about.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
     ''' A helpful 404 error page is rendered when a 404 error is encountered.'''
