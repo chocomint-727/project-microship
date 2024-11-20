@@ -15,7 +15,7 @@ all_genres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Dr
 def home():
     ''' Renders the homepage. Not much else to say '''
     animes = sql.get_all_titles()
-    return render_template("homepage.html", animes=animes, genres=allgenres)
+    return render_template("homepage.html", animes=animes, genres=all_genres)
 
 @app.route("/search")
 def search(): 
@@ -23,11 +23,18 @@ def search():
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route 
         '''
-    query = request.args.getlist("title")[0] # get all args from the get request
+    query, genres, blacklist = extract_search_parameters()
+    search_results = perform_search(query, genres, blacklist)
+    return render_template("showlist.html", indices=search_results)
+
+def extract_search_parameters():
+    query = request.args.getlist("title")[0]
     genres = [i.replace("_", " ") for i in request.args.getlist("genre")]
     blacklist = [i.replace("_", " ") for i in request.args.getlist("exclude")]
-    res=sql.fuzzy_match_name(query, genres, blacklist)
-    return render_template("showlist.html", indices=res, query=query, blacklist=blacklist, genres=genres, ids = [f[0] for f in res]) # return the indices in the list
+    return query, genres, blacklist
+
+def perform_search(query, genres, blacklist):
+    return sql.fuzzy_match_name(query, genres, blacklist)
 
 @app.route("/title")
 def title(): 
@@ -101,4 +108,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5250)
+    app.run(host='0.0.0.0', port=5210)

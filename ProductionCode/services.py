@@ -17,7 +17,7 @@ def get_image(id, title):
         print("img not found, falling back on default image")
         return not_found_img
 
-def blur_image_check(res):
+def is_inappropriate_genre(res):
     ''' Checks if artwork should be blurred based on genre of anime 
         (some inappropriate genres) '''
     if res != None and ("Hentai" in res[6] or "Ecchi" in res[6] or "Harem" in res[6] or "Yaoi" in res[6]):
