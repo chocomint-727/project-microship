@@ -42,7 +42,7 @@ def search():
     genres = request.args.getlist("genre")
     blacklist = request.args.getlist("exclude")
     res=sql.fuzzy_match_name(query, genres, blacklist)
-    return render_template("showlist.html", indices=res, query=query, genres=genres, ids = [f[0] for f in res]) # return the indices in the list
+    return render_template("showlist.html", indices=res, query=query, blacklist=blacklist, genres=genres, ids = [f[0] for f in res]) # return the indices in the list
 
 @app.route("/title")
 def title(): 
@@ -57,6 +57,18 @@ def title():
     else:
         img = getImage(res[3], res[4])
         return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
+    
+@app.route("/rankings")
+def rankings():
+    ''' Renders the rankings page with the top-ranked anime based on their score '''
+    limit = request.args.get("limit", 25, type=int) 
+    if limit <= 0:
+        abort(404)
+    top_animes = sql.get_top_ranked_anime(limit)
+    if top_animes is None or len(top_animes) == 0:
+        abort(404)
+    else:
+        return render_template("rankings.html", top_animes=top_animes, limit=limit)
 
 @app.route("/random")
 def randomAnime():
@@ -100,4 +112,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5240)
+    app.run(host='0.0.0.0', port=5242)

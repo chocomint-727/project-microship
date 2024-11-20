@@ -102,3 +102,19 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return None
+
+    def get_top_ranked_anime(self, limit):
+        ''' Retrieves the top ranked anime based on score '''
+        try:
+            cursor = self.connection.cursor()
+            query = f"""
+            SELECT * FROM (((anime_table natural join ratingkey) natural join typekey) natural join sourcekey)
+            WHERE score IS NOT NULL
+            ORDER BY score DESC
+            LIMIT %s;
+            """
+            cursor.execute(query, (limit,))
+            return cursor.fetchall()
+        except Exception as e:
+            print("Something went wrong when executing the query in get_top_ranked_anime: ", e)
+            return None

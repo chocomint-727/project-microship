@@ -3,6 +3,7 @@
     <title>About Us - Next Episode</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='global.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
 </head>
 
 <body>
@@ -11,7 +12,7 @@
             <ul>
                 <li><label for="home">HOME</label><a id="home" class="navbaritem" href="/">Home</a></li>
                 <li><label for="advanced">Advanced Search</label><a id="advanced" class="navbaritem" href="/">Advanced Search</a></li>
-                <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/">Rankings</a></li>
+                <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/rankings">Rankings</a></li>
                 <li><label for="random">Random</label><a id="random" class="navbaritem" href="/random">Random</a></li>
                 <li><label for="about">About</label><a id="about" class="navbaritem" href="/about">About</a></li>
             </ul>
@@ -20,7 +21,8 @@
 
     <main class="global">
         <section class="contain">
-            <h1 class="title">About Next Episode</h1>
+            <div class="about">
+            <h1 class="title abouttitle"><br>About Next Episode</h1>
             <p>
                 Welcome to <strong>Next Episode</strong>, your go-to website for discovering and exploring a massive database of anime shows and movies. Our website is designed to provide an engaging and comprehensive search experience, helping you find exactly what you're looking for based on your individual tastes and preferences.
             </p>
@@ -28,19 +30,20 @@
             <h2>Features</h2>
 
             <article class="feature">
-                <h3>Advanced Search</h3>
+                <h3><b>Advanced Search</b></h3>
                 <p>The Advanced Search feature allows users to filter and narrow down their search based on various criteria such as genre, release date, score, studio, and more.</p>
             </article>
 
             <article class="feature">
-                <h3>Rankings</h3>
+                <h3><b>Rankings</b></h3>
                 <p>The Ranked Page showcases the highest rated anime shows and movies, curated and updated based on user ratings and reviews. Here, you can find the highest-rated content, making it easy to dive into the best of what the anime world has to offer.</p>
             </article>
 
             <article class="feature">
-                <h3>Random</h3>
+                <h3><b>Random</b></h3>
                 <p>Our Random page procedurally generates a random recommendation for an anime for when you are indecisive or in the mood for a surprise.</p>
             </article>
+        </div>
         </section>
     </main>
 </body>

@@ -2,14 +2,7 @@ tr {
     cursor: pointer;
     border: 1px solid black;
     transition-duration: .1s;
-    background-color: rgb(75, 75, 85);
     height: auto;
-}
-
-tr:hover {
-    background-color: rgb(105, 105, 125);
-    transition-duration: .1s;
-    scale: 1.1;
 }
 
 table {
@@ -20,9 +13,30 @@ table {
     margin-right: auto;
 }
 
+thead {
+    background-color: #cb5b6e;
+}
+
+th {
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    border-top: 1px solid rgb(66, 0, 27);
+    border-bottom: 1px solid rgb(66, 0, 27);
+    border-left: 1px solid rgb(66, 0, 27);
+    border-right: 1px solid rgb(66, 0, 27);
+}
+
+.actualrow:hover {
+    background-color: rgb(136, 81, 81);
+    transition-duration: .1s;
+    scale: 1.1;
+}
+
 td {
     padding: 15px;
     text-align: center;
+    background-color: #5e2730;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
@@ -57,5 +71,36 @@ h1 {
 
 .resultstitle {
     width: 100%;
-    margin-top: 8%; 
+    margin-top: 6.5%; 
 }
+
+.applyrank {
+    transition-duration: 150ms;
+    text-align: center;
+    height: 10%;
+    margin-left:1%;
+    width: 5%;
+    background-color: #4c6b46;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #bed894;
+    border-radius: 1.5vh;
+    color: inherit;
+    font-family: inherit;
+    font-size: large;
+    padding: 3px;
+    cursor: pointer; 
+
+}
+
+.applyrank:hover {
+    transition-duration: 150ms;
+    background-color: #caebb6;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #689854;
+    border-radius: 3vh;
+    color: #333;
+    scale: 1.05; 
+}
+

@@ -16,7 +16,7 @@
                 <ul>
                     <li><label for="home">HOME</label><a id="home" class="navbaritem" href="/">Home</a></li>
                     <li><label for="advanced">Advanced Search</label><a id="advanced" class="navbaritem" href="/">Advanced Search</a></li>
-                    <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/">Rankings</a></li>
+                    <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/rankings">Rankings</a></li>
                     <li><label for="random">Random</label><a id="random" class="navbaritem" href="/random">Random</a></li>
                     <li><label for="about">About</label><a id="about" class="navbaritem" href="/about">About</a></li>
                 </ul>
@@ -28,11 +28,13 @@
                 <div class="title">
                     <p class="title">Next Episode</p>
                     <p class="c title">|</p>
+                    <p class="subtitle"><br>Your next favorite anime is minutes away.</p>
                 </div>
                 <div class="search">
                     <form action="/search" id="searchForm">
                         <label for="searchbar">Search Bar</label><input id="searchbar" type="text" name="title" class="bar"
                             placeholder="Search" />
+                        
                         <script>
                             $(document).ready(function ()
                             {
@@ -56,8 +58,8 @@
                     </form>
                 </div>
                 <div style="width:100%">
-                    <button class="menubutton" type="button" id="tags" value="Tags" onclick="toggleDiv('filter')">TAGS</button>
-                    <button class="menubutton" type="button" id="blacklist" value="Blacklist" onclick="toggleDiv('exclude')">Blacklist</button>
+                    <button class="menubutton" type="button" id="tags" value="Tags" onclick="toggleDiv('filter')">Choose Genres</button>
+                    <button class="menubutton" type="button" id="blacklist" value="Blacklist" onclick="toggleDiv('exclude')">Blacklist Genres</button>
                 </div>
                 <br>
             </div>
@@ -70,8 +72,8 @@
                         <p style="margin: 0;">Select the genres that results must contain</p>
                     </div>
                     <div class="overlaybutton">
-                        <button onclick="clearAll('filter')">Clear</button>
-                        <button onclick="toggleDiv('filter')">Apply</button>
+                        <button onclick="toggleDiv('filter')" class="apply" value="Apply">Apply</button>
+                        <button onclick="clearAll('filter')" class="clearall" value="Clear all">Clear all</button>
                     </div>
                 </div>
                 <div class="buttonContainer">
@@ -89,8 +91,8 @@
                         <p style="margin: 0;">Prevent results from containing genres</p>
                     </div>
                     <div class="overlaybutton">
-                        <button onclick="clearAll('exclude')">Clear</button>
-                        <button onclick="toggleDiv('exclude')" class="menubutton">Apply</button>
+                        <button onclick="toggleDiv('exclude')"  class="apply" value="Apply">Apply</button>
+                        <button onclick="clearAll('exclude')" class="clearall" value="Clear All">Clear All</button>
                     </div>
                     
                 </div>
@@ -101,5 +103,10 @@
                 </div>
             </div>
         </div>
+        <footer>
+            <p>&copy; 2024 MicroSHIP</p>
+        </footer>
+
     </body> 
 </html>
+
