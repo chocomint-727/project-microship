@@ -98,8 +98,13 @@ def filter():
 @app.route("/about")
 def about():
     ''' Renders about page '''
-
     return render_template("about.html")
+
+
+@app.route("/guide")
+def guide():
+    ''' Renders guide page '''
+    return render_template("guide.html")
 
 @app.errorhandler(404)
 def page_not_found(e):

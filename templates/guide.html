@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Next Episode</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='homepage.css') }}>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='global.css' ) }}>
+        <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src={{ url_for('static', filename='scripts/homepage.js') }} defer></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">        
+    </head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><label for="home">HOME</label><a id="home" class="navbaritem" href="/">Home</a></li>
+                <li><label for="rankings">Rankings</label><a id="rankings" class="navbaritem" href="/rankings">Rankings</a></li>
+                <li><label for="random">Random</label><a id="random" class="navbaritem" href="/random">Random</a></li>
+                <li><label for="guide">Guide</label><a id="guide" class="navbaritem" href="/guide">Guide</a></li>
+                <li><label for="about">About</label><a id="about" class="navbaritem" href="/about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+<div class="genre-container"><br><br><br>
+        <h1>Explaining Genres</h1>
+        <div class="genre">
+            <h2>Action</h2>
+            <p>High-energy scenes filled with intense battles, chases, and physical feats.</p>
+        </div>
+        <div class="genre">
+            <h2>Adventure</h2>
+            <p>Focuses on journeys to exciting locations and discovery.</p>
+        </div>
+        <div class="genre">
+            <h2>Cars</h2>
+            <p>Stories centered on vehicles, racing, and the automotive world.</p>
+        </div>
+        <div class="genre">
+            <h2>Comedy</h2>
+            <p>Lighthearted and humorous plots designed to make you laugh.</p>
+        </div>
+        <div class="genre">
+            <h2>Dementia</h2>
+            <p>Explores psychological and surreal themes, often unsettling.</p>
+        </div>
+        <div class="genre">
+            <h2>Demons</h2>
+            <p>Features supernatural beings, often involving battles between good and evil.</p>
+        </div>
+        <div class="genre">
+            <h2>Drama</h2>
+            <p>Emotional and character-driven stories with realistic conflicts.</p>
+        </div>
+        <div class="genre">
+            <h2>Fantasy</h2>
+            <p>Set in imaginative worlds with magical elements and creatures.</p>
+        </div>
+        <div class="genre">
+            <h2>Game</h2>
+            <p>Revolves around video games, board games, or virtual reality worlds.</p>
+        </div>
+        <div class="genre">
+            <h2>Historical</h2>
+            <p>Stories set in a specific historical period, often with authentic details.</p>
+        </div>
+        <div class="genre">
+            <h2>Horror</h2>
+            <p>Designed to scare and thrill, with elements of the macabre and supernatural.</p>
+        </div>
+        <div class="genre">
+            <h2>Josei</h2>
+            <p>Aimed at adult women, focusing on realistic relationships and emotions.</p>
+        </div>
+        <div class="genre">
+            <h2>Kids</h2>
+            <p>Simple, fun, and age-appropriate stories for younger audiences.</p>
+        </div>
+        <div class="genre">
+            <h2>Magic</h2>
+            <p>Focuses on spells, sorcery, and magical worlds.</p>
+        </div>
+        <div class="genre">
+            <h2>Martial Arts</h2>
+            <p>Centered around hand-to-hand combat and traditional fighting techniques.</p>
+        </div>
+        <div class="genre">
+            <h2>Mecha</h2>
+            <p>Features giant robots or mechanical suits, often in futuristic settings.</p>
+        </div>
+        <div class="genre">
+            <h2>Military</h2>
+            <p>Stories involving armies, warfare, and soldiers.</p>
+        </div>
+        <div class="genre">
+            <h2>Music</h2>
+            <p>Focuses on characters involved in music or the industry.</p>
+        </div>
+        <div class="genre">
+            <h2>Mystery</h2>
+            <p>Involves solving puzzles, crimes, or unraveling secrets.</p>
+        </div>
+        <div class="genre">
+            <h2>Parody</h2>
+            <p>Humorous takes on other works or genres.</p>
+        </div>
+        <div class="genre">
+            <h2>Police</h2>
+            <p>Stories about law enforcement and solving crimes.</p>
+        </div>
+        <div class="genre">
+            <h2>Psychological</h2>
+            <p>Explores the inner workings of the mind and emotional struggles.</p>
+        </div>
+        <div class="genre">
+            <h2>Romance</h2>
+            <p>Centers on romantic relationships and love stories.</p>
+        </div>
+        <div class="genre">
+            <h2>Samurai</h2>
+            <p>Features traditional Japanese warriors and their adventures.</p>
+        </div>
+        <div class="genre">
+            <h2>School</h2>
+            <p>Set in or around schools, focusing on student life.</p>
+        </div>
+        <div class="genre">
+            <h2>Sci-Fi</h2>
+            <p>Explores futuristic, technological, or scientific concepts.</p>
+        </div>
+        <div class="genre">
+            <h2>Seinen</h2>
+            <p>Aimed at adult men, often featuring mature themes and complex stories.</p>
+        </div>
+        <div class="genre">
+            <h2>Shoujo</h2>
+            <p>Aimed at young girls, focusing on relationships and emotional growth.</p>
+        </div>
+        <div class="genre">
+            <h2>Shoujo Ai</h2>
+            <p>Depicts romantic relationships between girls.</p>
+        </div>
+        <div class="genre">
+            <h2>Shounen</h2>
+            <p>Aimed at young boys, often action-packed and adventurous.</p>
+        </div>
+        <div class="genre">
+            <h2>Shounen Ai</h2>
+            <p>Depicts romantic relationships between boys.</p>
+        </div>
+        <div class="genre">
+            <h2>Slice of Life</h2>
+            <p>Depicts everyday life and relatable experiences.</p>
+        </div>
+        <div class="genre">
+            <h2>Space</h2>
+            <p>Explores outer space, futuristic technology, and intergalactic adventures.</p>
+        </div>
+        <div class="genre">
+            <h2>Sports</h2>
+            <p>Focuses on competitive sports and the challenges of athletes.</p>
+        </div>
+        <div class="genre">
+            <h2>Super Power</h2>
+            <p>Features characters with extraordinary abilities.</p>
+        </div>
+        <div class="genre">
+            <h2>Supernatural</h2>
+            <p>Explores phenomena beyond the natural world.</p>
+        </div>
+        <div class="genre">
+            <h2>Thriller</h2>
+            <p>Keeps you on the edge of your seat with suspense and tension.</p>
+        </div>
+        <div class="genre">
+            <h2>Vampire</h2>
+            <p>Features stories about vampires, often exploring immortality and bloodlust.</p>
+        </div>
+        <div class="genre">
+            <h2>Yuri</h2>
+            <p>Depicts romantic relationships between women.</p>
+        </div>
+    </div>
+</body>
+</html>
