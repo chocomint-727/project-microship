@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 sql = DataSource()
-allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Ecchi', 'Fantasy', 'Game', 'Harem', 'Hentai', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yaoi', 'Yuri']
+allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yaoi', 'Yuri']
 
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
@@ -60,11 +60,15 @@ def title():
 
 @app.route("/random")
 def randomAnime():
-    ''' Renders page for a random anime by calling get_random_anime '''
-    res = sql.get_random_anime()[0]
-    img = getImage(res[3], res[4])
-    blur = blurImageCheck(res)
-    return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
+    ''' Renders page for a random anime by calling get_random_anime and checking genres '''
+    
+    res = None
+    while res is None or blurImageCheck(res):
+        res = sql.get_random_anime()[0] 
+
+    img = getImage(res[3], res[4])  # Assuming res[3] and res[4] contain necessary data for the image
+    blur = blurImageCheck(res)  # Check if the image should be blurred
+    return render_template("showpanel.html", info=res, imageLink=img, blur=blur)
 
 @app.route("/genres")
 def filter(): 
