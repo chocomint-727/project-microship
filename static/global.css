@@ -84,3 +84,10 @@ li {
 a {
     text-decoration: none;
 }
+
+.about {
+    background-color: rgba(122, 49, 61, 0.372); 
+    height: 75%;
+    border: 1px;
+    border-radius: 15%;
+}
