@@ -12,13 +12,14 @@ def getImage(id, title):
         If image is not found, returns a generic not found image
         '''
     try:
-        r = requests.get(f"https://myanimelist.net/anime/{id}")
-        soup = BeautifulSoup(r.content, features="html.parser")
+        artwork_scraping_url =  "https://myanimelist.net/anime/"
+        result = requests.get(f"{artwork_scraping_url}{id}")
+        soup = BeautifulSoup(result.content, features="html.parser")
         img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
         return img
     except:
-        img = "https://i.ibb.co/fHnD0Qx/notfound.png"
-        return img
+        not_found_img = "https://i.ibb.co/fHnD0Qx/notfound.png"
+        return not_found_img
 
 def blurImageCheck(res):
     ''' Checks if artwork should be blurred based on genre of anime 
@@ -99,7 +100,6 @@ def filter():
 def about():
     ''' Renders about page '''
     return render_template("about.html")
-
 
 @app.route("/guide")
 def guide():
