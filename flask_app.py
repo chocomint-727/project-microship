@@ -1,31 +1,10 @@
 from flask import Flask, request, render_template, abort
 from ProductionCode.datasource import *
-from bs4 import BeautifulSoup
-import requests
+from ProductionCode.services import *
 
 app = Flask(__name__)
 sql = DataSource()
 allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
-
-def getImage(id, title):
-    ''' Scrapes the MAL page to grab the image using ID and title.
-        If image is not found, returns a generic not found image
-        '''
-    try:
-        artwork_scraping_url =  "https://myanimelist.net/anime/"
-        result = requests.get(f"{artwork_scraping_url}{id}")
-        soup = BeautifulSoup(result.content, features="html.parser")
-        img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
-        return img
-    except:
-        not_found_img = "https://i.ibb.co/fHnD0Qx/notfound.png"
-        return not_found_img
-
-def blurImageCheck(res):
-    ''' Checks if artwork should be blurred based on genre of anime 
-        (some inappropriate genres) '''
-    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6] or "Harem" in res[6] or "Yaoi" in res[6]):
-        return True
     
 @app.route("/")
 def home():
@@ -52,11 +31,11 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
-    blur = blurImageCheck(res)
+    blur = blur_image_check(res)
     if res == None:
         abort(404)
     else:
-        img = getImage(res[3], res[4])
+        img = get_image(res[3], res[4])
         return render_template("showpanel.html", info=res, imageLink=img, blur=blur) # return the indices in the list
     
 @app.route("/rankings")
@@ -76,11 +55,11 @@ def randomAnime():
     ''' Renders page for a random anime by calling get_random_anime and checking genres '''
     
     res = None
-    while res is None or blurImageCheck(res):
+    while res is None or blur_image_check(res):
         res = sql.get_random_anime()[0] 
 
-    img = getImage(res[3], res[4])  # Assuming res[3] and res[4] contain necessary data for the image
-    blur = blurImageCheck(res)  # Check if the image should be blurred
+    img = get_image(res[3], res[4])  # Assuming res[3] and res[4] contain necessary data for the image
+    blur = blur_image_check(res)  # Check if the image should be blurred
     return render_template("showpanel.html", info=res, imageLink=img, blur=blur)
 
 @app.route("/genres")
