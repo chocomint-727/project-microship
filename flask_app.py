@@ -39,8 +39,8 @@ def search():
         get request parameters are used rather than a route 
         '''
     query = request.args.getlist("title")[0] # get all args from the get request
-    genres = request.args.getlist("genre")
-    blacklist = request.args.getlist("exclude")
+    genres = [i.replace("_", " ") for i in request.args.getlist("genre")]
+    blacklist = [i.replace("_", " ") for i in request.args.getlist("exclude")]
     res=sql.fuzzy_match_name(query, genres, blacklist)
     return render_template("showlist.html", indices=res, query=query, blacklist=blacklist, genres=genres, ids = [f[0] for f in res]) # return the indices in the list
 

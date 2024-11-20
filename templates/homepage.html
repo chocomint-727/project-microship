@@ -28,7 +28,7 @@
                 <div class="title">
                     <p class="title">Next Episode</p>
                     <p class="c title">|</p>
-                    <p class="subtitle"><br>Your next favorite anime is minutes away.</p>
+                    <p class="subtitle"><br>Your next favorite anime is only minutes away.</p>
                 </div>
                 <div class="search">
                     <form action="/search" id="searchForm">
@@ -72,13 +72,14 @@
                         <p style="margin: 0;">Select the genres that results must contain</p>
                     </div>
                     <div class="overlaybutton">
-                        <button onclick="toggleDiv('filter')" class="apply" value="Apply">Apply</button>
+                        <button type="submit" form="searchForm" class="apply" value="Search">Search</button>
                         <button onclick="clearAll('filter')" class="clearall" value="Clear all">Clear all</button>
+                        <button onclick="toggleDiv('filter')" class="apply" value="Apply">Apply</button>
                     </div>
                 </div>
                 <div class="buttonContainer">
                     {% for g in genres%}
-                    <button class="option" data-type="genre" data-enabled="false" data-name="{{g}}">{{g}}</button>
+                    <button class="option" data-type="genre" data-enabled="false" data-name="{{- g.replace(' ', '_') -}}">{{g}}</button>
                     {%endfor%}
                 </div>
             </div>
@@ -91,14 +92,15 @@
                         <p style="margin: 0;">Prevent results from containing genres</p>
                     </div>
                     <div class="overlaybutton">
-                        <button onclick="toggleDiv('exclude')"  class="apply" value="Apply">Apply</button>
+                        <button type="submit" form="searchForm" class="apply" value="Search">Search</button>
                         <button onclick="clearAll('exclude')" class="clearall" value="Clear All">Clear All</button>
+                        <button onclick="toggleDiv('exclude')" class="apply" value="Apply">Apply</button>
                     </div>
                     
                 </div>
                 <div class="buttonContainer">
                     {% for g in genres%}
-                    <button class="option" data-type="exclude" data-enabled="false" data-name="{{g}}">{{g}}</button>
+                    <button class="option" data-type="exclude" data-enabled="false" data-name="{{- g.replace(' ', '_') -}}">{{g}}</button>
                     {%endfor%}
                 </div>
             </div>
@@ -109,4 +111,3 @@
 
     </body> 
 </html>
-
