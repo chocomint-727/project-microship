@@ -7,6 +7,14 @@ NAMES:
 - Omar Sobhy
 - Matthew Hall
 
+# Changes Made for the Final Project
+
+Front End Design Improvements
+
+-Added magnifying glass for the search bar
+
+-
+
 # Comments for the Flask Revision
 The URL format for our functionality is as follows:
 
