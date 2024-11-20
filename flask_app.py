@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 sql = DataSource()
-allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yaoi', 'Yuri']
+allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
 
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
@@ -23,7 +23,7 @@ def getImage(id, title):
 def blurImageCheck(res):
     ''' Checks if artwork should be blurred based on genre of anime 
         (some inappropriate genres) '''
-    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6] or "Harem" in res[6]):
+    if res != None and ("Hentai" in res[6] or "Ecchi" in res[6] or "Harem" in res[6] or "Yaoi" in res[6]):
         return True
     
 @app.route("/")
