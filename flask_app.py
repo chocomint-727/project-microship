@@ -4,7 +4,7 @@ from ProductionCode.services import *
 
 app = Flask(__name__)
 sql = DataSource()
-allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 
+all_genres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 
              'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 
              'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 
              'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 
