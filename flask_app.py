@@ -98,8 +98,13 @@ def filter():
 @app.route("/about")
 def about():
     ''' Renders about page '''
-
     return render_template("about.html")
+
+
+@app.route("/guide")
+def guide():
+    ''' Renders guide page '''
+    return render_template("guide.html")
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -112,4 +117,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5250)
+    app.run(host='0.0.0.0', port=5251)
