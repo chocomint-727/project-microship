@@ -41,7 +41,8 @@ def title():
 @app.route("/rankings")
 def rankings():
     ''' Renders the rankings page with the top-ranked anime based on their score '''
-    limit = request.args.get("limit", 25, type=int) 
+    default_limit = 25
+    limit = request.args.get("limit", default_limit, type=int) 
     if limit <= 0:
         abort(404)
     top_animes = sql.get_top_ranked_anime(limit)
@@ -51,15 +52,15 @@ def rankings():
         return render_template("rankings.html", top_animes=top_animes, limit=limit)
 
 @app.route("/random")
-def randomAnime():
+def random_anime():
     ''' Renders page for a random anime by calling get_random_anime and checking genres '''
     
     res = None
     while res is None or blur_image_check(res):
         res = sql.get_random_anime()[0] 
 
-    img = get_image(res[3], res[4])  # Assuming res[3] and res[4] contain necessary data for the image
-    blur = blur_image_check(res)  # Check if the image should be blurred
+    img = get_image(res[3], res[4])  
+    blur = blur_image_check(res)  
     return render_template("showpanel.html", info=res, imageLink=img, blur=blur)
 
 @app.route("/genres")
