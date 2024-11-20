@@ -4,7 +4,12 @@ from ProductionCode.services import *
 
 app = Flask(__name__)
 sql = DataSource()
-allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
+allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 
+             'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 
+             'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 
+             'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 
+             'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 
+             'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
     
 @app.route("/")
 def home():
@@ -31,7 +36,7 @@ def title():
         '''
     args = request.args.getlist("title")
     res=sql.get_data_from_title(args[0])
-    blur = blur_image_check(res)
+    blur = is_inappropriate_genre(res)
     if res == None:
         abort(404)
     else:
@@ -54,13 +59,12 @@ def rankings():
 @app.route("/random")
 def random_anime():
     ''' Renders page for a random anime by calling get_random_anime and checking genres '''
-    
     res = None
-    while res is None or blur_image_check(res):
+    while res is None or is_inappropriate_genre(res):
         res = sql.get_random_anime()[0] 
 
     img = get_image(res[3], res[4])  
-    blur = blur_image_check(res)  
+    blur = is_inappropriate_genre(res)  
     return render_template("showpanel.html", info=res, imageLink=img, blur=blur)
 
 @app.route("/genres")
