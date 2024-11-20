@@ -160,9 +160,9 @@ form {
 .apply {
     transition-duration: 150ms;
     text-align: center;
-    height: 30%;
+    height: 60%;
     width: 20%;
-    background-color: #4c6b46;
+    background-color: #587a50;
     border-width: 1px;
     border-style: solid;
     border-color: #bed894;
@@ -190,9 +190,9 @@ form {
 .clearall {
     transition-duration: 150ms;
     text-align: center;
-    height: 30%;
+    height: 60%;
     width: 20%;
-    background-color: #7a1c1c;
+    background-color: #aa2727;
     border-width: 1px;
     border-style: solid;
     border-color: #d89494;
@@ -214,6 +214,36 @@ form {
     border-radius: 3vh;
     color: #333;
     scale: 1.05; 
+}
+
+.ss {
+    transition-duration: 150ms;
+    text-align: center;
+    height: 60%;
+    width: 44%;
+    background-color: #c15835;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d89494;
+    border-radius: 1.5vh;
+    color: inherit;
+    font-family: inherit;
+    font-size: large;
+    margin: 2%;
+    padding: 3px;
+    cursor: pointer;
+
+}
+
+.ss:hover {
+    transition-duration: 150ms;
+    background-color: #f0bca0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #974d37;
+    border-radius: 3vh;
+    color: #333;
+    scale: 1.05;
 }
 
 .overlay {
@@ -252,9 +282,27 @@ form {
     width: 30%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.overlaybutton .top {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:end;
+}
+
+.overlaybutton .bottom {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: top;
 }
 
 .buttonContainer {
