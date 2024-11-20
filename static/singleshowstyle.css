@@ -25,7 +25,7 @@ td {
     border-bottom: 1px solid gray;
     border-right: 1px dashed gray;
     border-left: 1px dashed gray;
-    background-color: rgb(50, 50, 65);
+    background-color: rgb(122, 49, 61); 
 }
 
 td.categories:first-child {
@@ -63,35 +63,35 @@ tr.categories {
 
 .contain {
     display: flex;
-    background-color: rgb(50, 50, 50);
+    background-color: rgba(88, 58, 58, 0.623);
     margin-top: 6%;
 }
 
 .left {
     width: 30%;
     float: left;
-    background-color: rgb(50, 50, 65);
+    background-color: rgb(65, 50, 50);
 }
 
 .right {
     width: 70%;
     flex: auto;
-    background-color: rgb(50, 50, 65);
+    background-color: rgb(65, 50, 50);
 }
 
 .imgcontainer {
     height: auto;
-    background-color: rgb(50, 50, 55);
+    background-color: rgb(55, 50, 50);
 }
 
 .titlecontainer {
     height: auto;
-    background-color: rgb(70, 70, 85);
+    background-color: rgb(81, 56, 56);
 }
 
 .info {
     width: auto;
-    background-color: rgb(75, 75, 90);
+    background-color: rgb(104, 73, 73);
 }
 
 .morelike {
@@ -104,9 +104,9 @@ tr.categories {
 }
 
 .goback button {
-    background-color: #5C4D6A; 
     color: #E8DDB5;
-    border: 2px solid #8C78A8; 
+    border: 2px solid #D08A93; 
+    background-color: #8C3A47;
     padding: 10px 20px;
     font-size: 16px;
     font-family: 'Mina';
@@ -116,8 +116,8 @@ tr.categories {
 }
 
 .goback button:hover {
-    background-color: #8C78A8;
-    color: #1E1E1E; 
+    background-color: #d29090;
+    color: #1e1e1e; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
