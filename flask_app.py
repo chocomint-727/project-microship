@@ -22,18 +22,21 @@ def search():
     ''' Interacts with the filter by genres function. 
         Because this function takes an arbitrary amount of arguments,
         get request parameters are used rather than a route 
+        This function is abstracted into two component functions.
         '''
     query, genres, blacklist = extract_search_parameters()
     search_results = perform_search(query, genres, blacklist)
     return render_template("showlist.html", indices=search_results)
 
 def extract_search_parameters():
+    '''returns all of the parameters submitted in the form as individual lists'''
     query = request.args.getlist("title")[0]
     genres = [i.replace("_", " ") for i in request.args.getlist("genre")]
     blacklist = [i.replace("_", " ") for i in request.args.getlist("exclude")]
     return query, genres, blacklist
 
 def perform_search(query, genres, blacklist):
+    '''run the query on with the parameters extracted'''
     return sql.fuzzy_match_name(query, genres, blacklist)
 
 @app.route("/title")
