@@ -6,14 +6,15 @@ import requests
 app = Flask(__name__)
 sql = DataSource()
 allgenres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Drama', 'Fantasy', 'Game', 'Historical', 'Horror', 'Josei', 'Kids', 'Magic', 'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
+artwork_scraping_url =  "https://myanimelist.net/anime/"
 
 def getImage(id, title):
     ''' Scrapes the MAL page to grab the image using ID and title.
         If image is not found, returns a generic not found image
         '''
     try:
-        r = requests.get(f"https://myanimelist.net/anime/{id}")
-        soup = BeautifulSoup(r.content, features="html.parser")
+        result = requests.get(f"{artwork_scraping_url}{id}")
+        soup = BeautifulSoup(result.content, features="html.parser")
         img = list(soup.find_all(True, {"alt": title, "class": "ac"}))[0]["data-src"] 
         return img
     except:
@@ -99,7 +100,6 @@ def filter():
 def about():
     ''' Renders about page '''
     return render_template("about.html")
-
 
 @app.route("/guide")
 def guide():
