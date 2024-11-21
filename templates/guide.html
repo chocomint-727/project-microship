@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='homepage.css') }}>
         <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='global.css' ) }}>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='guide.css' ) }}>
         <link href='https://fonts.googleapis.com/css?family=Mina' rel='stylesheet'>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -25,7 +26,21 @@
     </header>
     <main class="global">
         <section class="contain">
-    <div class="column-container"><br><br><br>
+            <div class="column-container"><br><br><br><br>
+                <div class="about"><br>
+            <h1>Search Feature</h1>
+            <p> <strong>The search feature is more powerful than it seems on the surface.</strong>
+                On the homepage, you can search simply by title of Anime, or you can include both title and preferred genre/genres you want blacklisted. To do so,
+                pick genres and select "Apply": this saves your preferred genres in the search. Then, you can search your desired title with that genre.
+                If you simply just want to search for Animes with a specific genre but with no title in mind, either click "Search" after picking genres,
+                or, if you want to additionally blacklist genres, click "Apply" then go to the blacklisting genres menu, choose genres you want to blacklist,
+                then click "Search". Finally, you can do a combination of all three: title, preferred genres, and blacklisted genres; simply click "Apply" when
+                picking the preferred genres, then do the same when picking blacklisted genres, put in your favorite Anime title in the search and voila! You just
+                utilized the search function to the fullest.<br><br>
+            </p></div>
+    <br>
+    <div class="column-container">
+        <div class="about"><br>
         <h1>Column Descriptions</h1>
         <p><strong>MAL ID:</strong> A unique identifier (from MyAnimeList where the database is from) for each anime entry.</p><br>
         <p><strong>Title:</strong> The name of the anime.</p><br>
@@ -39,10 +54,11 @@
         <p><strong>Popularity:</strong> A ranking based on the number of people who have interacted with the anime (e.g., watched, rated).</p><br>
         <p><strong>Rating:</strong> The content rating of the anime (e.g., PG-13, R).</p><br>
         <p><strong>Type:</strong> The format of the anime (e.g., TV series, movie, OVA).</p><br>
-        <p><strong>Source:</strong> The original material the anime is adapted from (e.g., Manga, Light Novel, Original).</p><br>
-    </div>    
+        <p><strong>Source:</strong> The original material the anime is adapted from (e.g., Manga, Light Novel, Original).</p><br><br>
+    </div></div>
+    <h1>Explaining Genres</h1>
+
     <div class="genre-container"><br>
-        <h1>Explaining Genres</h1>
         <div class="item">
             <h2>Action</h2>
             <p>High-energy scenes filled with intense battles, chases, and physical feats.</p>
