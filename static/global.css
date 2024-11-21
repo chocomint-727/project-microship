@@ -94,3 +94,17 @@ a {
     border: 1px;
     border-radius: 8vh;
 }
+
+.columns{
+    background-color: rgba(122, 49, 61, 0.372); 
+    background-size: cover;
+    border: 1px;
+    border-radius: 8vh;
+}
+
+.searchDescription{
+    background-color: rgba(122, 49, 61, 0.372); 
+    background-size: cover;
+    border: 1px;
+    border-radius: 8vh;
+}
