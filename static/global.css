@@ -5,12 +5,12 @@
 html {
     font-family: 'Mina';
     color: blanchedalmond;
-    background-size: auto 140%;
+    background-size: auto 180%;
 
     /*We may use this bg in the future but havent done any design around this color scheme, so for now we'll comment this out*/
     background:linear-gradient(rgba(255, 162, 162, 0.75), rgba(255, 162, 162, 0.75)), url(https://i.ibb.co/rs0xHyh/cherry-blossom-tree-blurred.gif);
     background-repeat: no-repeat;
-    background-size: auto 140%;
+    background-size: auto 180%;
     
     /*
     background-repeat: no-repeat;
@@ -86,6 +86,7 @@ a {
 }
 
 .about {
+    margin-top: 450px;
     background-color: rgba(122, 49, 61, 0.372); 
     background-size: cover;
     border: 1px;
