@@ -31,10 +31,8 @@
                     excluding genres: "{{ blacklist | join(', ') }}"
                 {% elif genres %}
                     genres: "{{ genres | join(', ') }}"
-
                 {% elif query and query != '' %}
                     "{{ query }}"
-                    
                 {% endif %}
             </h1>
         </div>
