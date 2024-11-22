@@ -9,11 +9,46 @@ NAMES:
 
 # Changes Made for the Final Project
 
-Front End Design Improvements
+New Features [maybe do tests for them? If we are not doing tests maybe we shouldn’t mention new features altogether]
+A fully functional and user-customizable Rankings page.
+Genre blacklisting & searching through the search functionality.
 
--Added magnifying glass for the search bar
+## Front End Design Improvements
+-Users expressed that they thought the purple color scheme was not compatible with the pink background. To address this, we recolored every element to follow a more laid-back red color-scheme. Therefore, every CSS file was modified.
 
--
+-Almost every user found some columns in the search results confusing as they could not really tell what they were for (e.g. “Popularity” being a number, but there is nowhere that indicates that this number is for popularity). We made this change on the Search & Rankings pages (rankings.html, showlist.html, showlist.css) : added column titles to search to explain what the search results show for every column (e.g. Title, Genres, etc). Furthermore, our “Guide” page further explains the names of these columns.
+
+-Users thought that searching by genre (which was unfinished, only available through following the URL convention) was not very intuitive. This fix is made on the homepage (homepage.html, homepage.css, homepage.js). We added two buttons to choose or exclude genres, and by clicking on these buttons a menu pops up with an intuitive design to easily choose/exclude genres, apply/clear all genres (with styled buttons to reflect their functionality), or search with chosen genres.
+
+-Users occasionally expressed confusion about how to actually search for a title on our homepage, after typing something in the search bar. We addressed this usability issue in “homepage.html” by adding a magnifying glass on top of the search button on the homepage.
+
+-Users found that they did not understand what some genres meant or what some columns meant (or how they were calculated, like Popularity for example). We added a “Guide” page (guide.html) explaining in detail what all of these terms are, which can be accessed through the “Guide” button on the homepage.
+
+-Users sometimes found that they did not understand what some features were for and/or what the website is and/or how to fully utilize it. We made an “About” page to explain that, which can be accessed by clicking on the “About” button on the homepage. We changed the “homepage.html” page, “global.css,” and created the “about.html” file. 
+
+-In addressing the problem above, we made another change to homepage.html. We added a subtitle describing what the website does: searches for Anime shows.
+
+## Code Design Improvements [add lines of code where change was made. For example: line 35-38 etc.] 
+[css files are also kind of a mess - maybe we can clean them up and add that as an additional improvement?]
+
+-We have abstracted out our search function into three different functions based on the tasks they perform. The main function now just calls a feature abstraction function and a search performing function (flask_app.py lines 20-37). Our search function had previously exemplified the code smells of having code at the wrong level of abstraction, a method doing more than one thing, having a method be more than one level of abstraction. This is because the search function previously had to get and process user input, and then generate the search results without helper functions. Therefore, the function had multiple levels of abstraction meaning that some of the code was also at the wrong level of abstraction.
+
+-We renamed functions in flask_app.py in order to have a consistent naming convention. Instead of having some functions named in CamelCase, we have them all named in snake_case (flask_app.py lines 30, 36, 67, 101, 106). Previously, our function names in this file exemplified the code smell of inconsistency, since they did not all follow the same naming convention. 
+
+-We renamed blur_image_check in flask_app.py (we moved this function into services.py after doing this) to is_inappropriate_genre as it returns a boolean value (True if genre is inappropriate) so it makes the code more readable (services.py line 20). This made the function name more descriptive, so it got rid of the code smell of having an indescriptive function name. It also helped us follow more standard nomenclature, by having a boolean function start with “is,” which is a common convention, making it easier for outsiders to understand what this function is doing.
+
+-We have moved the get_image and is_inappropriate_genre from flask_app.py to their own file called services.py We believe that these functions should not be stored in the flask app file, because they exclusively deal with retrieving and processing outside data (services.py: the whole file). Therefore, these functions had been exemplifying the code smell of misplaced responsibility by being in flask_app.py.
+
+-Other developers could easily get confused by links that are hard-coded in long lines of code, so we made a change to streamline our process of web scraping an image in flask_app.py. We made a variable for the anime image scraping link that is accessed through a call to our get_image function in services.py rather than it being hard-coded into the code – which means that one can easily change the link by modifying the variable and preventing it from being a mysterious link hardcoded in some line of code (flask_app.py lines 50 and 73). This does not seem to fit exactly with any of the code smells that we learned about, but it makes our code easier to edit in the future, more readable, and easier to understand.
+
+-In addressing the issue above, we also changed the variable name for the not found image from “img” to “not_found_img” so that it could be more descriptive. (services.py lines 15 and 18). Therefore, this change got rid of the code smell of having an indescriptive variable name.
+
+-We broke up the all_genres list in flask_app.py into more lines so that it is more readable in the code (flask_app.py lines 7-12). This does not fix a specific code smell, but is more readable than having the list of genres all on one line.
+
+-Changed limit of rankings to a default_limit variable. This makes the function more readable in the future. -I do not think that this should be here because we did not have the rankings feature in the original front end submission.
+
+
+
 
 # Comments for the Flask Revision
 The URL format for our functionality is as follows:
