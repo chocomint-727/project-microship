@@ -19,29 +19,30 @@ def home():
 
 @app.route("/search")
 def search(): 
-    ''' Interacts with the filter by genres function. 
-        Because this function takes an arbitrary amount of arguments,
-        get request parameters are used rather than a route 
-        This function is abstracted into two component functions.
+    ''' Handles the search functionality for the applicationt and renders
+        the Search page
         '''
     query, genres, blacklist = extract_search_parameters()
     search_results = perform_search(query, genres, blacklist)
-    return render_template("showlist.html", indices=search_results)
+    return render_template("showlist.html", query=query, genres=genres, blacklist=blacklist, indices=search_results)
 
 def extract_search_parameters():
-    '''returns all of the parameters submitted in the form as individual lists'''
+    ''' Extracts search parameters from the GET request
+        '''
     query = request.args.getlist("title")[0]
     genres = [i.replace("_", " ") for i in request.args.getlist("genre")]
     blacklist = [i.replace("_", " ") for i in request.args.getlist("exclude")]
     return query, genres, blacklist
 
 def perform_search(query, genres, blacklist):
-    '''run the query on with the parameters extracted'''
+    ''' Performs a search using the given parameters by interfacing with the SQL backend.
+        Uses a fuzzy matching to allow approximate matches for the title (query)
+        '''
     return sql.fuzzy_match_name(query, genres, blacklist)
 
 @app.route("/title")
 def title(): 
-    ''' Interacts with the filter by genres function. 
+    ''' Renders title page. 
         Employs a helper method to grab the thumbnail image on this page
         '''
     args = request.args.getlist("title")
@@ -111,4 +112,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5210)
+    app.run(host='0.0.0.0', port=5110)
