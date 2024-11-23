@@ -28,6 +28,8 @@ Genre blacklisting & searching through the search functionality.
 
 -In addressing the problem above, we made another change to homepage.html. We added a subtitle describing what the website does: searches for Anime shows.
 
+-It previously had been possible for a user to get an anime from a NSFW
+
 ## Code Design Improvements [add lines of code where change was made. For example: line 35-38 etc.] 
 [css files are also kind of a mess - maybe we can clean them up and add that as an additional improvement?]
 
