@@ -7,6 +7,45 @@ NAMES:
 - Omar Sobhy
 - Matthew Hall
 
+# Each of Our Contributions to the Project
+Raaid: 
+Made tests for the command line and the Flask app
+Made the ‘About’ page
+Removed NSFW genres from the genre select menu and prevented them from appearing in the randomize function
+Helped in the making of the functions in datasource
+Worked on CIDER for each deliverable
+
+
+Christian:
+
+Made the search feature
+Made the filtering function and pop ups
+Created the home page and individual show page
+Worked on search page
+CSS, design direction
+Worked with buttons and site navigation
+
+Matthew: I worked on the following for this project:
+-Tests for the command line and flask app
+-The “Random” functionality
+-The “About” page
+-Detailing inclusivity problems and coming up with ideas to address them in our CIDER analyses
+-Worked on creating the database
+-Did some miscellaneous HTML and CSS work
+
+
+Omar:
+Made Rankings page/feature
+Made Guide page
+Recolored all pages to follow a consistent color scheme
+Worked on refactoring some functions (e.g. Search function)
+Made blurring image feature to blur NSFW genre artworks
+Made/refactored some tests, particularly for Flask app
+Worked on the front-end design for all pages
+Worked on other features on the back-end
+
+
+
 # Changes Made for the Final Project
 
 New Features [maybe do tests for them? If we are not doing tests maybe we shouldn’t mention new features altogether]
