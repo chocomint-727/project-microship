@@ -9,6 +9,7 @@ NAMES:
 
 # Each of Our Contributions to the Project
 Raaid: 
+
 -Made tests for the command line and the Flask app
 
 -Made the ‘About’ page
@@ -21,6 +22,7 @@ Raaid:
 
 
 Christian:
+
 -Made the search feature
 
 -Made the filtering function and pop ups
@@ -34,6 +36,7 @@ Christian:
 -Worked with buttons and site navigation
 
 Matthew: I worked on the following for this project:
+
 -Tests for the command line and flask app
 
 -The “Random” functionality
@@ -48,6 +51,7 @@ Matthew: I worked on the following for this project:
 
 
 Omar:
+
 -Made Rankings page/feature
 
 -Made Guide page
