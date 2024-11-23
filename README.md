@@ -91,8 +91,7 @@ Omar:
 
 -One potentially small usability issue that existed was not knowing what page a user was on. To address this, the page that the user is on is now highlighted on the navigation bar and when you hover over one of the buttons, it expands and is highlighted. This change was made in global.css.
 
-## Code Design Improvements [add lines of code where change was made. For example: line 35-38 etc.] 
-[css files are also kind of a mess - maybe we can clean them up and add that as an additional improvement?]
+## Code Design Improvements
 
 -We have abstracted out our search function into three different functions based on the tasks they perform. The main function now just calls a feature abstraction function and a search performing function (flask_app.py lines 20-37). Our search function had previously exemplified the code smells of having code at the wrong level of abstraction, a method doing more than one thing, having a method be more than one level of abstraction. This is because the search function previously had to get and process user input, and then generate the search results without helper functions. Therefore, the function had multiple levels of abstraction meaning that some of the code was also at the wrong level of abstraction.
 
