@@ -28,7 +28,7 @@ Genre blacklisting & searching through the search functionality.
 
 -In addressing the problem above, we made another change to homepage.html. We added a subtitle describing what the website does: searches for Anime shows.
 
--It previously had been possible for a user to get an anime from a NSFW
+-It previously had been possible for a user to get an anime from a NSFW genre when clicking on the random button. We have made it impossible for this to happen now in order to make this functionality more inclusive for younger users. These changes were made in flask_app.py and services.py.
 
 ## Code Design Improvements [add lines of code where change was made. For example: line 35-38 etc.] 
 [css files are also kind of a mess - maybe we can clean them up and add that as an additional improvement?]
@@ -46,8 +46,6 @@ Genre blacklisting & searching through the search functionality.
 -In addressing the issue above, we also changed the variable name for the not found image from “img” to “not_found_img” so that it could be more descriptive. (services.py lines 15 and 18). Therefore, this change got rid of the code smell of having an indescriptive variable name.
 
 -We broke up the all_genres list in flask_app.py into more lines so that it is more readable in the code (flask_app.py lines 7-12). This does not fix a specific code smell, but is more readable than having the list of genres all on one line.
-
--Changed limit of rankings to a default_limit variable. This makes the function more readable in the future. -I do not think that this should be here because we did not have the rankings feature in the original front end submission.
 
 
 
