@@ -24,7 +24,8 @@
                 {% elif genres and blacklist %} genres: "{{ genres | join(', ')}}" excluding genres: "{{ blacklist | join(', ') }}"
                 {% elif blacklist %} excluding genres: "{{ blacklist | join(', ') }}"
                 {% elif genres %} genres: "{{ genres | join(', ') }}"
-                {% elif query and query != '' %} "{{ query }}" {% endif %}
+                {% elif query and query != '' %} "{{ query }}"
+                {% else %} every Anime on the website. {% endif %}
             </h1>
         </div>
         <br> 
