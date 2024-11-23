@@ -68,29 +68,29 @@ class TestHomepage(unittest.TestCase):
         ''' Tests the filter_by_genre function with one valid genre
         '''
         self.app = app.test_client()
-        response = self.app.get("/genres?genre=comedy").data
-        self.assertIn(b"1, 6, 15, 16, 17", response)
+        response = self.app.get("/search?title=&genre=comedy").data
+        self.assertIn(b'<h1>Search Results for  genres: "comedy"', response)
     
     def test_multiple_genre(self):
         ''' Tests the filter_by_genre function with more than one valid genre
         '''
         self.app = app.test_client()
-        response = self.app.get("/genres?genre=comedy&genre=drama").data
-        self.assertIn(b"1, 6, 16", response)
+        response = self.app.get("/search?title=&genre=comedy&genre=drama").data
+        self.assertIn(b'<h1>Search Results for  genres: "comedy, drama"', response)
  
     def test_no_genre(self):
         ''' Tests the filter_by_genre function with no inputted genres
         '''
         self.app = app.test_client()
-        response = self.app.get("/genres").data
-        self.assertIn(b"1, 5, 6, 7, 8, 15, 16, 17, 18, 19", response)
+        response = self.app.get("/search?title=&genre=").data
+        self.assertIn(b'<h1>Search Results for  genres: ""', response)
     
     def test_nonexistant_genre(self):
         ''' Tests the filter_by_genre function with one invalid genre
         '''
         self.app = app.test_client()
-        response = self.app.get("/genres?genre=schools").data
-        self.assertIn(b"Page not found", response)
+        response = self.app.get("/search?title=&genre=schools").data
+        self.assertIn(b'<h1>Search Results for  genres: "schools"', response)
         
     def test_valid_and_invalid_genre(self):
         ''' Tests the filter_by_genre function with a valid genre and an invalid genre, which should

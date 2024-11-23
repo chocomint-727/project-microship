@@ -18,22 +18,13 @@
             </nav>
         </header>
         <div class="resultstitle">
-            <h1>Search Results for 
-                {% if query and query != '' and genres and blacklist %}
-                    "{{ query }}" with genres: "{{ genres | join(', ') }}" excluding: "{{ blacklist | join(', ') }}"
-                {% elif query and query != '' and genres %}
-                    "{{ query }}" with genres: "{{ genres | join(', ') }}"
-                {% elif query and query != '' and blacklist %}
-                    "{{ query }}" excluding genres: "{{ blacklist | join(', ') }}"
-                {% elif genres and blacklist %}
-                    genres: "{{ genres | join(', ')}}" excluding genres: "{{ blacklist | join(', ') }}"
-                {% elif blacklist %}
-                    excluding genres: "{{ blacklist | join(', ') }}"
-                {% elif genres %}
-                    genres: "{{ genres | join(', ') }}"
-                {% elif query and query != '' %}
-                    "{{ query }}"
-                {% endif %}
+            <h1>Search Results for {% if query and query != '' and genres and blacklist %} "{{ query }}" with genres: "{{ genres | join(', ') }}" excluding: "{{ blacklist | join(', ') }}"
+                {% elif query and query != '' and genres %} "{{ query }}" with genres: "{{ genres | join(', ') }}"
+                {% elif query and query != '' and blacklist %} "{{ query }}" excluding genres: "{{ blacklist | join(', ') }}"
+                {% elif genres and blacklist %} genres: "{{ genres | join(', ')}}" excluding genres: "{{ blacklist | join(', ') }}"
+                {% elif blacklist %} excluding genres: "{{ blacklist | join(', ') }}"
+                {% elif genres %} genres: "{{ genres | join(', ') }}"
+                {% elif query and query != '' %} "{{ query }}" {% endif %}
             </h1>
         </div>
         <br> 
