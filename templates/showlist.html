@@ -50,7 +50,7 @@
                 <tbody>
                     {% for ix in indices %}
                     <tr onclick='window.location = "/title?title={{ix[4]}}"' class="actualrow">
-                        {% for data in ix[3:] %}
+                        {% for data in ix[3:] %} 
                         <td>{{ data }}</td>
                         {% endfor %}
                     </tr>

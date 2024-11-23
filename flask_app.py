@@ -23,6 +23,7 @@ def search():
         the Search page
         '''
     query, genres, blacklist = extract_search_parameters()
+    invald_genre_check(genres)
     search_results = perform_search(query, genres, blacklist)
     return render_template("showlist.html", query=query, genres=genres, blacklist=blacklist, indices=search_results)
 
@@ -39,6 +40,15 @@ def perform_search(query, genres, blacklist):
         Uses a fuzzy matching to allow approximate matches for the title (query)
         '''
     return sql.fuzzy_match_name(query, genres, blacklist)
+
+def invald_genre_check(genres_search):
+    ''' Checks for invalid genres. If not valid,
+        Returns 404 page. 
+        '''
+    all_genres_lower = {g.lower() for g in all_genres}
+    for genre in genres_search:
+        if genre.lower() not in all_genres_lower:
+            return abort(404)
 
 @app.route("/title")
 def title(): 
@@ -112,4 +122,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5120)
+    app.run(host='0.0.0.0', port=5122)
