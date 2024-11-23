@@ -9,7 +9,7 @@ all_genres = ['Action', 'Adventure', 'Cars', 'Comedy', 'Dementia', 'Demons', 'Dr
              'Martial Arts', 'Mecha', 'Military', 'Music', 'Mystery', 'Parody', 'Police', 
              'Psychological', 'Romance', 'Samurai', 'School', 'Sci-Fi', 'Seinen', 
              'Shoujo', 'Shoujo Ai', 'Shounen', 'Shounen Ai', 'Slice of Life', 'Space', 
-             'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire', 'Yuri']
+             'Sports', 'Super Power', 'Supernatural', 'Thriller', 'Vampire']
     
 @app.route("/")
 def home():
@@ -112,4 +112,4 @@ def python_bug(e):
     return render_template("error500.html")
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5120)
+    app.run(host='0.0.0.0', port=5111)
