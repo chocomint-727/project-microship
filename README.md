@@ -9,48 +9,68 @@ NAMES:
 
 # Each of Our Contributions to the Project
 Raaid: 
-Made tests for the command line and the Flask app
-Made the ‘About’ page
-Removed NSFW genres from the genre select menu and prevented them from appearing in the randomize function
-Helped in the making of the functions in datasource
-Worked on CIDER for each deliverable
+-Made tests for the command line and the Flask app
+
+-Made the ‘About’ page
+
+-Removed NSFW genres from the genre select menu and prevented them from appearing in the randomize function
+
+-Helped in the making of the functions in datasource
+
+-Worked on CIDER for each deliverable
 
 
 Christian:
+-Made the search feature
 
-Made the search feature
-Made the filtering function and pop ups
-Created the home page and individual show page
-Worked on search page
-CSS, design direction
-Worked with buttons and site navigation
+-Made the filtering function and pop ups
+
+-Created the home page and individual show page
+
+-Worked on search page
+
+-CSS, design direction
+
+-Worked with buttons and site navigation
 
 Matthew: I worked on the following for this project:
 -Tests for the command line and flask app
+
 -The “Random” functionality
+
 -The “About” page
+
 -Detailing inclusivity problems and coming up with ideas to address them in our CIDER analyses
+
 -Worked on creating the database
+
 -Did some miscellaneous HTML and CSS work
 
 
 Omar:
-Made Rankings page/feature
-Made Guide page
-Recolored all pages to follow a consistent color scheme
-Worked on refactoring some functions (e.g. Search function)
-Made blurring image feature to blur NSFW genre artworks
-Made/refactored some tests, particularly for Flask app
-Worked on the front-end design for all pages
-Worked on other features on the back-end
+-Made Rankings page/feature
+
+-Made Guide page
+
+-Recolored all pages to follow a consistent color scheme
+
+-Worked on refactoring some functions (e.g. Search function)
+
+-Made blurring image feature to blur NSFW genre artworks
+
+-Made/refactored some tests, particularly for Flask app
+
+-Worked on the front-end design for all pages
+
+-Worked on other features on the back-end
 
 
 
 # Changes Made for the Final Project
 
-New Features [maybe do tests for them? If we are not doing tests maybe we shouldn’t mention new features altogether]
-A fully functional and user-customizable Rankings page.
-Genre blacklisting & searching through the search functionality.
+## New Features-Tests were written for these new features
+-A fully functional and user-customizable Rankings page.
+-Genre blacklisting & searching through the search functionality.
 
 ## Front End Design Improvements
 -Users expressed that they thought the purple color scheme was not compatible with the pink background. To address this, we recolored every element to follow a more laid-back red color-scheme. Therefore, every CSS file was modified.
@@ -68,6 +88,8 @@ Genre blacklisting & searching through the search functionality.
 -In addressing the problem above, we made another change to homepage.html. We added a subtitle describing what the website does: searches for Anime shows.
 
 -It previously had been possible for a user to get an anime from a NSFW genre when clicking on the random button. We have made it impossible for this to happen now in order to make this functionality more inclusive for younger users. These changes were made in flask_app.py and services.py.
+
+-One potentially small usability issue that existed was not knowing what page a user was on. To address this, the page that the user is on is now highlighted on the navigation bar and when you hover over one of the buttons, it expands and is highlighted. This change was made in global.css.
 
 ## Code Design Improvements [add lines of code where change was made. For example: line 35-38 etc.] 
 [css files are also kind of a mess - maybe we can clean them up and add that as an additional improvement?]
