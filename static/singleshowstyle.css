@@ -90,6 +90,8 @@ tr.categories {
 }
 
 .info {
+    display: flex;
+    flex-direction: column;
     width: auto;
     background-color: rgb(104, 73, 73);
 }

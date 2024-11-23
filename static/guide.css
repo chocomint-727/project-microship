@@ -8,6 +8,7 @@
 }
 
 .genre-container .item {
+    transition-duration: 150ms;
     flex: 1 1 calc(20% - 16px);
     box-sizing: border-box; 
     padding: 10px;
@@ -17,3 +18,11 @@
     text-align: center;
 }
 
+.item:hover {
+    cursor:pointer;
+    transition-duration: 150ms;
+    scale: 1.05;
+    border: 1px solid #774049;
+    background-color: #fbc5c7d8;
+    color: #380000;
+}

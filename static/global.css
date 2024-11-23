@@ -88,7 +88,7 @@ a {
 }
 
 .about {
-    margin-top: 10%;
+    margin-top: 6%;
     margin-right: auto;
     margin-left: auto;
     background-color: rgba(122, 49, 61, 0.372); 
@@ -96,7 +96,7 @@ a {
     border: 1px;
     border-radius: 8vh;
     max-width: 65vw;
-    padding: 5vw;
+    padding: 3vw;
 }
 
 .columns{
@@ -107,6 +107,7 @@ a {
 }
 
 .searchDescription{
+    padding: 3vw;
     background-color: rgba(122, 49, 61, 0.372); 
     background-size: cover;
     border: 1px;
