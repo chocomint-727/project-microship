@@ -1,6 +1,4 @@
-# CS257-F24-TeamTemplate
-Template for long-term team projects for CS257 Software Design Fall 2024
-
+# CS257-F24-Team-Project
 NAMES:
 - Christian Park
 - Raaid Iqbal
@@ -34,6 +32,7 @@ Christian:
 -CSS, design direction
 
 -Worked with buttons and site navigation
+
 
 Matthew: I worked on the following for this project:
 
