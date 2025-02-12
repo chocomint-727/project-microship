@@ -2,8 +2,8 @@
 NAMES:
 - Christian Park
 - Raaid Iqbal
-- Omar Sobhy
 - Matthew Hall
+- Omar Sobhy
 
 # Each of Our Contributions to the Project
 ## Christian:
@@ -27,7 +27,7 @@ NAMES:
 - Worked on CIDER for each deliverable
 
 
-## Matthew: I worked on the following for this project:
+## Matthew:
 
 - Tests for the command line and flask app
 - The “Random” functionality
